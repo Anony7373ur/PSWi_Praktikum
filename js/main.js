@@ -1,9 +1,8 @@
-const greetingButton = document.getElementById("greeting-button");
+const greetingButton =
+ document.querySelector('#greeting-button');
 greetingButton.addEventListener('click', () => {
+ alert('Terima kasih sudah menekan ini');
+});
 
-    alert("Terima kasih sudah membuka websitenya!");
-}
-);
-
-
+console.log('main.js berhasil dijalankan, comrade. jadi tidak perlu khawatir');
 

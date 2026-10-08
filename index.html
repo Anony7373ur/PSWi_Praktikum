@@ -1,32 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Halaman Pertama Saya</title>
- <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Organisasi Mahasiswa</title>
 </head>
 <body>
- <header>
- <h1>Selamat Datang</h1>
- <p>Halaman pertama Pengembangan Situs Web I.</p>
- </header>
+    <header>
+        <h1>Komunitas Web Mahasiswa</h1>
+        <p>Belajar, berbagi, dan membangun situs bersama.</p>
+        <nav aria-label="Navigasi utama">
+        <ul>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#kegiatan">Kegiatan</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#program_kerja">Program Kerja</a></li>
+            <li><a href="#berita">Berita</a></li>
+        </ul>
+ </nav>
+</header>
  <main>
- <h2>Profil Singkat</h2>
- <p>Nama saya Gabriel Christian Ronaldo Panjaitan. Saya sedang belajar web.</p>
- <section>
- <h2>Tujuan Belajar</h2>
- <ul>
- <li>Memahami cara kerja web</li>
- <li>Membuat halaman HTML</li>
- <li>Menggunakan Git</li>
- </ul>
-</section>
- <button type="button" id="greeting-button">Tampilkan salam</button>
- </main>
- <script src="js/main.js"></script>
-<footer>
- <p>Dibuat untuk praktikum Pengembangan Situs Web I.</p>
+    <section id="tentang">
+        <h2>Tentang Komunitas</h2>
+        <p>Komunitas ini membantu mahasiswa belajar web.</p>
+    </section>
+    <section id="kegiatan">
+        <h2>Kegiatan Terbaru</h2>
+        <article>
+            <h3>Lokakarya HTML Semantik</h3>
+            <p>Peserta mempelajari struktur halaman yang bermakna.</p>
+        </article>
+    </section>
+
+    <section id="program_kerja">
+        <h2>Program kerja yang tersedia di website ini</h2>
+        <h3>Pekerjaan ini tidak sepenuhnya asli</h3>
+        <ul>
+            <li><p>Program kerja 1</p></li>
+            <li><p>Program kerja 2</p></li>
+            <li><p>Program kerja 3</p></li>
+        </ul>
+    </section>
+    <section id="berita">
+        <h2>Berita terbaru di website ini</h2>
+        <article>
+            <h3>Berita yang masih tersedia dan terpebaharui saat ini</h3>
+            <p>Pengangguran  di indonesia turun 6% karena uang rupiah menguat.</p>
+        </article>
+    </section>
+</main>
+
+<aside>
+    <h2>Informasi Tambahan</h2>
+    <p>Pendaftaran anggota dibuka setiap semester.</p>
+</aside>
+<aside>
+    <h2>Jadwal pertemuan</h2>
+    <p>Pertemuan untuk komunitas website ini ada Pukul 13.00 WIB - 15.00 WIB</p>
+</aside>
+<footer id="kontak">
+    <p>&copy; 2026 Komunitas Web Mahasiswa.</p>
+    <address>Email: web@example.ac.id</address>
 </footer>
 </body>
 </html>
