@@ -1,73 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
- content="Profil dan program Komunitas Web Mahasiswa.">
-<title>Beranda | Komunitas Web Mahasiswa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pendaftaran Kegiatan</title>
 </head>
 <body>
-    <header>
-        <h1>Komunitas Web Mahasiswa</h1>
-        <p>Belajar, berbagi, dan membangun situs bersama.</p>
-        <nav aria-label="Navigasi utama">
-        <ul>
-            <li><a href="#tentang">Tentang</a></li>
-            <li><a href="kegiatan.html">Kegiatan</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
-            <li><a href="#program_kerja">Program Kerja</a></li>
-            <li><a href="#berita">Berita</a></li>
-        </ul>
- </nav>
-</header>
- <main>
-    <h1>Selamat datang di website saya!!</h1>
-    <h2>Developernya adalah: </h2>
-    <p>Nama: Gabriel Christian Ronaldo Panjaitan</p>
-    <p>NIM: 41426009</p>
-    <p>Kelas: 41TRPL1</p>
-    <section id="tentang">
-        <h2>Tentang Komunitas</h2>
-        <p>Komunitas ini membantu mahasiswa belajar web.</p>
-    </section>
-    <section id="kegiatan">
-        <h2>Kegiatan Terbaru</h2>
-        <article>
-            <h3>Lokakarya HTML Semantik</h3>
-            <p>Peserta mempelajari struktur halaman yang bermakna.</p>
-        </article>
-    </section>
+    <main>
+        <h1>Pendaftaran Kegiatan</h1>
+        <p>Kolom bertanda wajib harus diisi.</p>
+        <form action="#" method="get">
+            <label for="nama">Nama lengkap (wajib):</label>
+            <input id="nama" name="nama" autocomplete="name" required>
+            <br>
+            <label for="email">Email (wajib):</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <br>
+            <label for="telpon">No. Telepon (wajib):</label>
+            <input id="telpon" name="telpon" type="tel" autocomplete="tel" required>
+            <br>
+            <label for="prodi">Program studi (wajib):</label>
+            <select id="prodi" name="prodi" required>
+                <option value="">Pilih program studi</option>
+                <option value="trpl">D4 TRPL</option>
+                <option value="ti">D3 Teknologi Informasi</option>
+            </select>
+            <label for="ticket">Jumlah Tiket (Wajib)</label>
+            <input id="ticket" name="ticket" type="number" min="1" max="5" step="1" value="1">
 
-    <section id="program_kerja">
-        <h2>Program kerja yang tersedia di website ini</h2>
-        <h3>Pekerjaan ini tidak sepenuhnya asli</h3>
-        <ul>
-            <li><p>Program kerja 1</p></li>
-            <li><p>Program kerja 2</p></li>
-            <li><p>Program kerja 3</p></li>
-        </ul>
-    </section>
-    <section id="berita">
-        <h2>Berita terbaru di website ini</h2>
-        <article>
-            <h3>Berita yang masih tersedia dan terpebaharui saat ini</h3>
-            <p>Pengangguran  di indonesia turun 6% karena uang rupiah menguat.</p>
-        </article>
-    </section>
-</main>
-
-<aside>
-    <h2>Informasi Tambahan</h2>
-    <p>Pendaftaran anggota dibuka setiap semester.</p>
-</aside>
-<aside>
-    <h2>Jadwal pertemuan</h2>
-    <p>Pertemuan untuk komunitas website ini ada Pukul 13.00 WIB - 15.00 WIB</p>
-</aside>
-<footer id="kontak">
-    <p>&copy; 2026 Komunitas Web Mahasiswa.</p>
-    <address>Email: web@example.ac.id</address>
-</footer>
+            <fieldset>
+                <legend>Mode kehadiran (wajib)</legend>
+                <input id="luring" name="mode" type="radio" value="luring" required>
+                <label for="luring">Luring</label>
+                <input id="daring" name="mode" type="radio" value="daring">
+                <label for="daring">Daring</label>
+            </fieldset>
+            <fieldset>
+                <legend>Minat topik HTML</legend>
+                <input id="pilihan1" name="gambar" type="checkbox" value="topik" required>
+                <label for="pilihan1">Peletakan gambar</label>
+                <br>
+                <input id="pilihan2" name="form" type="checkbox" value="topik">
+                <label for="pilihan2">Pembuatan form</label>
+            </fieldset>
+            <fieldset>
+                <legend>Aksesibilitas</legend>
+                <input id="pilihan3" name="teks alternatif" type="checkbox" value="alternatif">
+                <label for="pilihan3">Teks alternatif pada gambar</label>
+                <br>
+                <input id="pilihan4" name="terjemahan" type="checkbox" value="terjemahan">
+                <label for="pilihan4">teks terjemahan</label>
+            </fieldset>
+            <label for="catatan">Catatan (opsional)</label>
+            <textarea id="catatan" name="catatan" rows="4" maxlength="300"></textarea>
+            <button type="submit">Daftar</button>
+        </form>
+    </main>
 </body>
+
 </html>
