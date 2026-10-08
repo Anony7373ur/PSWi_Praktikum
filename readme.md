@@ -1,52 +1,72 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB "Validasi Native dan Aksesibilitas Form"
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB (Unit, Tipografi, dan Sistem Gaya Dasar)
 
-NAMA: GABRIEL CHRISTIAN RONALDO PANJAITAN
-NIM : 41426009
-PRODI: DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
+Nama    : Gabriel Christian Ronaldo Panjaitan
+NIM:    : 41426009
+Prodi   : DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
 
-Laporan validasi dan aksesibilitas form:
+Laporan:
 
-Hasil data yang dikirim di query: file:///D:/Semester%201/Pengembangan%20situs%20web%201/week%203/pswi-minggu-03/sesi-03/index.html?nama=Gabriel+C.R+Panjaitan&email=example%40del.ac.id&telpon=087776545534&prodi=trpl&jumlah=4&kode=234467&mode=luring&gambar=topik&form=topik&teks+alternatif=alternatif&terjemahan=terjemahan&catatan=Aku+suka+belajar+HTML#
+Penggunaan AI: Saya tidak pernah memakai AI
 
-Tujuannya dibuat website ini ialah:
-Untuk memvalidasi dan menggunakan akesisbilitas form dari devtool untuk mengecek apakah setiap tag yang dibuat bisa berfungsi dengan baik dan bisa diakses. Kemudian penggunaan css untuk melihat ketika di tab apakah kotak yang difokuskan akan jadi biru sebagai penanda. Kemudian membuat format kode peserta dengan pattern yang bisa membuat batasan berapa karakter yang bisa diinput/diketik.
+Tujuan: Ini untuk melatih penggunaan var(--), width/maxwidth, beberapa modifikasi font, button:focus-visible, input:focus-visible dan sebagainya.
 
-Keyboard dan fokus:
-Ketika di tab, maka akan muncul kotak biru di input itu yang menandakan bahwa itu kefokus atau keselect jadi tidak perlu mouse untuk menekannya. Ketika tab ditekan berkali kali maka fokus akan turun dan berulang sedangkan jika shift tab maka fokus nya akan naik dan berulang. Ketika menggunakan tombol panah untuk radio dan select, itu otomatis kecentang dan jika di space maka checkbox akan kecentang. Untuk submit tinggal enter karena sudah difokuskan melalui tab.
+Asumsi sebelum menguji di modul ini/praktikum ini adalah memasukkan properti main ke main sebelumnya, token yang dimaksud seperti variabel, font family sama seperti sebelumnya dan button focus untuk memfokuskan ke tombol.
 
-Audit Aksesibilitas:
-Cara  membukanya dengan melalui devtool yaitu inspect dan tampilan sudah muncul maka akan ada 2 tanda panah kekanan yang ada di samping maka jika ditekan akan ada beberapa pilihan yang muncul salah satunya lighthouse, ketika diklik maka akan muncul beberapa checkbox yang dimana salah satu nya adalah aksesibilitas, kemudian centang snapshot karena ini belum masih dalam bentuk http tapi masih lokal. ketika dijalankan dan diperiksa maka akan muncul skor aksesibilitas dari website kita yang dimana jika hijau kalo di website saya itu 19/19 maka semua tag berfungsi dengan baik sedangkan jika ada typo atau kesalahan dalam pengkodean maka skornya tidak memenuhi dan memerlukan perbaikan.
+Reset ukuran kotak:
+*, *::before, *::after { box-sizing: border-box; } main { width: 90%; max-width: 60rem; margin-inline: auto; }
+Tindakan: Memasukkan main kedalam main yang sebelumnya di css dan menambahkan box-sizing di dalam nya.
+Hasil nyata: ini berfungsi untuk mengubah properti main yang dimana lebar nya 90 % dari maksimal lebarnya 60 rem. Width adalah lebar dari main bisa pixel, rem dan persen. Max-width adalah maksimal lebar yang dibuat sekaligus jika tidak ada persen di width maka width diambil langsung dari situ. kalau misalnya width 65% dan max width 200 rem, maka lebar dari main adalah 65% dari 200rem.
+Bukti: Lebar dari main berubah 65% dari 60rem.
 
-Matriks UJI dan Experimen Kegagalan:
+Token warna dan jarak:
+:root { --brand: #175cd3; --space: 1rem;        --surface: white; --ink: #243244; }
+.card { padding: var(--space); background: var(--surface); }
+Tindakan: Meletakkan :root diatas kali di css dan mengganti padding dan background di .card menjadi var(--)
+Hasil nyata: Ini berfungsi sebagai penyimpan nilai ke variabel agar bisa dipanggil hanya dengan --brand jadi tidak perlu memasukkan nilai seperti
+background: red tetapi bisa dari background: var(--brand). :root itu sebagai tempat menyimpan variabelnya yang harus paling atas.
+Bukti: Padding berdasarkan dari --space dan warna background dari --ink.
+
+Tipografi dan Unit:
+body { font-family: Arial, sans-serif; color: var(--ink);    
+font-size: 1rem; line-height: 1.6; } 
+h1 { font-size: 2rem; line-height: 1.2; } 
+p { max-width: 65ch; }
+Tindakan: Memasukkan isi body pada body yang sebelumnya, menambahkan h1 dan p ke css beserta propertinya.
+Hasil nyata: Font dari body akan berubah menjadi arial dan bisa juga sans serif kemudian color nya diambir dari variabel --ink, selanjutnya
+ukuran fontnya adalah 2rem dan jarak tiap baris kata adalah 1.2. Untuk h1, ukuran teks h1 menjadi 2 rem dan jarak tiap baris adalah 1.2.
+Kemudian ukuran maksimal lebar dari p adalah 65ch yang dimana batas horizontal kanan untuk teks.
+Bukti: Font dari body adalah Arial, dengan warna sesuai var --ink yaitu hitam, ukuran font adalah 1rem dengan jarak antar baris adalah 1.6
+       sedangkan untuk h1, ukuran font adalah 2rem dan jarak antar baris text adalah 1.2
+       Untuk p, ukuran maksimal lebar dari teks adalah 65ch.
+
+Organisasi dan Audit:
+button:focus-visible, input:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px;}
+Tindakan: Memasukkan dibawah button yang udh ada sebelumnya di css
+Hasil Nyata: Tombol submit/daftar sudah tidak bisa ditekan karena ada focus-visible yang membuat tidak menjalankan propertinya meskipun ada
+di css. jika kita menghapus focus-visible maka properti yang ada di button antara lain outline dan outline-offset akan berjalan dan muncul di tampilan halaman web kita.
+Bukti: Jika dijalankan yang masih ada focus-visible, maka tidak akan diterapkan properti css di button tetapi masih di tekan tetapi auto fokus ke atas sedangkan jika kita menghapus focus-visible maka properti yang ada di button dan input akan bekerja yang dimana akan muncul outline sebesar 3 pixel dengan warna sesuai var --brand dan outline offset itu garis diluar dari kotak buttonnya sebesar 3px.
+
+Latihan mandiri dan matriks UJI:
 Kasus:
-1. Email kosong Ditolak dan harus diisi karena kita buat required dalam kode nya.
-2. Email abc Ditolak dan harus ada @ karena tipe datanya email.
-3. Email contoh valid Diterima jika lainnya valid
-4. Jumlah 0 / 6 Ditolak karena step dan valuenya 1 dan tidak 0 juga min nya itu 1
-5. Jumlah 1 / 5 Diterima karena step dan value nya 1 dan minnya adalah 0 dan max adalah 5
-6. Jumlah 1.5 Ditolak bila step=1
-7. Kode 12345 Ditolak karena pattern dari kode nya itu harus 6 tidak boleh kecil dan lebih besar dari situ
-8. Kode 001234 Diterima karena sesuai pattern dari kode itu
-9. Keyboard Semua kontrol dapat dicapai buktinya yaitu bisa di tab, di arrow otomatis kecentang dan enter untuk submit.
+1. Zoom 200% hasilnya adalah kontennya masih muncul
+2. Token brand diganti berarti setiap properti style yang memakai var --brand seperti background: var(--brand) maka jika kita menggantinya dari :root maka warna otomatis berganti kepada setiap properti yang ada var --brand
+3. Tab berarti fokus akan muncul di input sebagai pemberitahu kalo kita akan di input disitu dan jika ingin lebih jelas maka bisa diperjelas dengan menggunakan css dengan membuat outline warna biru. ketika spam tab maka fokus akan turun ke bawah dan berulang.
+4. Teks panjang hasilnya karena teksnya tetap rapi dan tidak terpotong karena tipografi dan reset ukuran kotak.
 
-Mengapa server tetap perlu memvalidasi karena server sudah dikaitkan ke form maka jika ada salah satu yang belum terisi maka akan dilarang
-untuk dikirim kecuali diisi.
+Format laporan:
+Kasus normal
+Tindakan: Saya menambah properti main dari width: 90%; max-width: 60rem; margin-inline: auto;  ke dalam main sebelumnya
+Hasil aktual: Width, max-width dan margin berubah dan text menjadi tidak teratur dan ketika tampilan web diperkecil maka tampilan akan menyesuaikan.
+Bukti/status: Berhasil(ss tampilan halaman)
 
-cara menjalankan:
-ini diambil dari sesi 2 jadi hanya menambah kode perserta yaitu
-<label for="kode">Kode peserta (6 angka, wajib)</label>
-<p id="kode-help">Contoh: 001234. Gunakan tepat enam angka.</p>
-<input id="kode" name="kode" type="text" inputmode="numeric" pattern="[0-9]{6}" aria-describedby="kode-help" required>
-dan image dengan figure, fcaption, dan altnya. 
-pada kode peserta ada inputmode="numeric" yang berarti harus angka dan patternya itu [0-9] yang berarti hanya bisa diisi dari angka 0 sampai 9
-sedangkan {6} adalah batas dan harus sesuai dengan jumlah karakter tersebut, jadi input nya tidak boleh lebih kecil dan lebih besar dari 6 karakter. kemudian gambar dibuat sebagai pelengkap sebuah form.
+Kasus Batasan :
+Tindakan: saya memasukkan :root dan .card di css
+Hasil Aktual: Terdapat banyak variabel yang dimana isinya adalah properti seperti background: red dan bisa diterapkan variabel menggunakan var(--warna).
+Bukti/status: Berhasil (ss variabel)
 
-Hasil ujinya:
-ketika input di kode peserta, tidak bisa mengetik huruf alpabet dan harus number atau numerik dan harus sesuai dengan 6 karakter agar bisa di 
-dikirim.
+Kasus gagal:
+Tindakan: saya memasukkan button-focus dan input:focus visible
+Hasil aktual: Properti dari dari  button dan input tidak muncul di tampilan sedangkan saya menghapus focus visible maka properti nya akan tampil.
+Bukti/status: Gagal (ss tampilan halaman)
 
-
-
-
-
-
+Milestone: Saya sudah bisa belajar dan memahami cara pengunaan variabel --var, properti lebih banyak, dan peggunaan button:focus-visible
