@@ -1,6 +1,6 @@
-const submit =
+const greetingButton =
  document.querySelector('#greeting-button');
-submit.addEventListener('click', () => {
+greetingButton.addEventListener('click', () => {
  alert('Terima kasih sudah menekan ini');
 });
 

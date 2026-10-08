@@ -1,72 +1,58 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB (Unit, Tipografi, dan Sistem Gaya Dasar)
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB "Selector, Cascade, dan Box Model"
 
-Nama    : Gabriel Christian Ronaldo Panjaitan
-NIM:    : 41426009
-Prodi   : DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
+NAMA: GABRIEL CHRISTIAN RONALDO PANJAITAN
+NIM : 41426009
+PRODI: DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
 
-Laporan:
+Laporan Selector, Cascade, dan Box Model:
 
-Penggunaan AI: Saya tidak pernah memakai AI
+Tujuannya dibuat website ini ialah:
+Menghubungkan stylesheet eksternal dan memilih selector yaitu class sesuai kebutuhan dan Menelusuri konflik CSS melalui aturan cascade dan DevTools.
 
-Tujuan: Ini untuk melatih penggunaan var(--), width/maxwidth, beberapa modifikasi font, button:focus-visible, input:focus-visible dan sebagainya.
+cara menjalankannya:
+membuat link untuk mengaitkan ke css external dengan <link rel="" href="">, kemudian membuat class pada form agar bisa gunakan di css dan di modif ke class yang kita seperti <form class="card"> dan jika ingin memodif tampilan dari form kita tersebut maka menggunakan .card atau kalo lebih spesifik form.card. dan didalamnya dibuat warna dari text tersebut yaitu color: purple dan color: orange.
+Properties yang dipakai dalam website ini adalah: width, padding, back border, color, background, dan margin. 
 
-Asumsi sebelum menguji di modul ini/praktikum ini adalah memasukkan properti main ke main sebelumnya, token yang dimaksud seperti variabel, font family sama seperti sebelumnya dan button focus untuk memfokuskan ke tombol.
+Tindakan, hasil nyata, dan bukti:
+<link rel = "stylesheet" href="style.css">, hasilnya bisa menggunakan css external dari folder lain.
+Bukti: tampilan web berubah karena css
 
-Reset ukuran kotak:
-*, *::before, *::after { box-sizing: border-box; } main { width: 90%; max-width: 60rem; margin-inline: auto; }
-Tindakan: Memasukkan main kedalam main yang sebelumnya di css dan menambahkan box-sizing di dalam nya.
-Hasil nyata: ini berfungsi untuk mengubah properti main yang dimana lebar nya 90 % dari maksimal lebarnya 60 rem. Width adalah lebar dari main bisa pixel, rem dan persen. Max-width adalah maksimal lebar yang dibuat sekaligus jika tidak ada persen di width maka width diambil langsung dari situ. kalau misalnya width 65% dan max width 200 rem, maka lebar dari main adalah 65% dari 200rem.
-Bukti: Lebar dari main berubah 65% dari 60rem.
+form.card { padding: 1rem; background: white; }
+.notice { color: #175cd3; }
+hasilnya adalah background dari form putih dan padding nya 1rem dan <p> berubah warna jadi biru.
+Bukti: Background form jadi putih dan text class notice di <p> jadi warna biru
 
-Token warna dan jarak:
-:root { --brand: #175cd3; --space: 1rem;        --surface: white; --ink: #243244; }
-.card { padding: var(--space); background: var(--surface); }
-Tindakan: Meletakkan :root diatas kali di css dan mengganti padding dan background di .card menjadi var(--)
-Hasil nyata: Ini berfungsi sebagai penyimpan nilai ke variabel agar bisa dipanggil hanya dengan --brand jadi tidak perlu memasukkan nilai seperti
-background: red tetapi bisa dari background: var(--brand). :root itu sebagai tempat menyimpan variabelnya yang harus paling atas.
-Bukti: Padding berdasarkan dari --space dan warna background dari --ink.
+.card p { color: purple; }
+.notice { color: orange; }
+hasilnya adalah text di .card p dan fokus ke <p> maka warna text <p> di dalam card akan berubah dan
+warna text dari .notice berubah ke orange. Buktinya adalah warna text <p> dalam form berubah ke ungu dan <p class="notice"> menjadi warna orange.
 
-Tipografi dan Unit:
-body { font-family: Arial, sans-serif; color: var(--ink);    
-font-size: 1rem; line-height: 1.6; } 
-h1 { font-size: 2rem; line-height: 1.2; } 
-p { max-width: 65ch; }
-Tindakan: Memasukkan isi body pada body yang sebelumnya, menambahkan h1 dan p ke css beserta propertinya.
-Hasil nyata: Font dari body akan berubah menjadi arial dan bisa juga sans serif kemudian color nya diambir dari variabel --ink, selanjutnya
-ukuran fontnya adalah 2rem dan jarak tiap baris kata adalah 1.2. Untuk h1, ukuran teks h1 menjadi 2 rem dan jarak tiap baris adalah 1.2.
-Kemudian ukuran maksimal lebar dari p adalah 65ch yang dimana batas horizontal kanan untuk teks.
-Bukti: Font dari body adalah Arial, dengan warna sesuai var --ink yaitu hitam, ukuran font adalah 1rem dengan jarak antar baris adalah 1.6
-       sedangkan untuk h1, ukuran font adalah 2rem dan jarak antar baris text adalah 1.2
-       Untuk p, ukuran maksimal lebar dari teks adalah 65ch.
+.card { width: 240px; padding: 16px;
+ border: 2px solid #445; margin: 12px; }
+ hasilnya adalah ukuran dari form jadi kecil dan jaraknya antar text dan luarnya agak jauh dan dilengkapi oleh garis tepi dan margin untuk jarak dari sisi website. Buktinya adalah formulir menjadi sebelah kiri dan panjang  box lebih pendek dan garis tepi agak tebal yang mengelilingi formulirnya.
 
-Organisasi dan Audit:
-button:focus-visible, input:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px;}
-Tindakan: Memasukkan dibawah button yang udh ada sebelumnya di css
-Hasil Nyata: Tombol submit/daftar sudah tidak bisa ditekan karena ada focus-visible yang membuat tidak menjalankan propertinya meskipun ada
-di css. jika kita menghapus focus-visible maka properti yang ada di button antara lain outline dan outline-offset akan berjalan dan muncul di tampilan halaman web kita.
-Bukti: Jika dijalankan yang masih ada focus-visible, maka tidak akan diterapkan properti css di button tetapi masih di tekan tetapi auto fokus ke atas sedangkan jika kita menghapus focus-visible maka properti yang ada di button dan input akan bekerja yang dimana akan muncul outline sebesar 3 pixel dengan warna sesuai var --brand dan outline offset itu garis diluar dari kotak buttonnya sebesar 3px.
+ 1. Kasus Normal:
+ Tindakan: Menambahkan form.card { padding: 1rem; background: white; } .notice { color: #175cd3; }
+ Hasil Aktual: Warna latar belakang form berubah ke putih dan paddingnya 1rem sedangkan warna text
+.notice di <p> berubah ke biru.
+Bukti/status: Berhasil (Screenshot tampilan halaman web)
+Hasilnya sesuai karena di html kita buat class dan untuk css, kita buat .card agar bisa hanya fokus styling pada
+class tersebut.
 
-Latihan mandiri dan matriks UJI:
-Kasus:
-1. Zoom 200% hasilnya adalah kontennya masih muncul
-2. Token brand diganti berarti setiap properti style yang memakai var --brand seperti background: var(--brand) maka jika kita menggantinya dari :root maka warna otomatis berganti kepada setiap properti yang ada var --brand
-3. Tab berarti fokus akan muncul di input sebagai pemberitahu kalo kita akan di input disitu dan jika ingin lebih jelas maka bisa diperjelas dengan menggunakan css dengan membuat outline warna biru. ketika spam tab maka fokus akan turun ke bawah dan berulang.
-4. Teks panjang hasilnya karena teksnya tetap rapi dan tidak terpotong karena tipografi dan reset ukuran kotak.
+2. Kasus Batas:
+Tindakan: Menambahkan .card p { color: purple; } .notice { color: orange; } tetapi tidak menambahkan <p> di form
+Hasil Aktual: warna text <P> pada form.card berubah menjadi ungu jika ditambahkan <p> pada form dan warna text .notice berubah ke orange.
+Bukti/Status: Berhasil tetapi warna <p> tidak berubah karena tidak menambahkan <p> di form 
 
-Format laporan:
-Kasus normal
-Tindakan: Saya menambah properti main dari width: 90%; max-width: 60rem; margin-inline: auto;  ke dalam main sebelumnya
-Hasil aktual: Width, max-width dan margin berubah dan text menjadi tidak teratur dan ketika tampilan web diperkecil maka tampilan akan menyesuaikan.
-Bukti/status: Berhasil(ss tampilan halaman)
+3. Kasus gagal:
+Tindakan: menambahkan .card { width: 240px; padding: 16px; border: 2px solid #445; margin: 12px; } berdasarkan box sizing = box border.
+Hasil Aktual: Tampilan tetap sama dan tidak ada perubahan kecuali bagian margin, width dan border. jika ditambah box sizing = box border, tidak ada perubahan sama sekali.
+Bukti/Status: Gagal
 
-Kasus Batasan :
-Tindakan: saya memasukkan :root dan .card di css
-Hasil Aktual: Terdapat banyak variabel yang dimana isinya adalah properti seperti background: red dan bisa diterapkan variabel menggunakan var(--warna).
-Bukti/status: Berhasil (ss variabel)
+Catatan validator sebelum:
+Terdapat error pada form action="" dan jika mengubah penamaan dari href atau class dari sebuah text tidak akan ada perubahan sama sekali.
 
-Kasus gagal:
-Tindakan: saya memasukkan button-focus dan input:focus visible
-Hasil aktual: Properti dari dari  button dan input tidak muncul di tampilan sedangkan saya menghapus focus visible maka properti nya akan tampil.
-Bukti/status: Gagal (ss tampilan halaman)
+catan Validator sesudah:
+Diperbaiki dengan menambahkan # pada form action="#"
 
-Milestone: Saya sudah bisa belajar dan memahami cara pengunaan variabel --var, properti lebih banyak, dan peggunaan button:focus-visible
+MILESTONE: Saya sudah bisa membuat css dengan menggunakan class, padding, margin dan lainnya.
