@@ -4,63 +4,24 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Halaman Pertama Saya</title>
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <main>
-        <h1>Pendaftaran Kegiatan</h1>
-        <p class="notice">Kolom bertanda wajib harus diisi.</p>
-        <form class="card" action="#" method="get">
-            <label for="nama">Nama lengkap (wajib):</label>
-            <input id="nama" name="nama" autocomplete="name" required>
-            <br>
-            <label for="email">Email (wajib):</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-            <br>
-            <label for="telpon">No. Telepon (wajib):</label>
-            <input id="telpon" name="telpon" type="tel" autocomplete="tel" required>
-            <br>
-            <label for="prodi">Program studi (wajib):</label>
-            <select id="prodi" name="prodi" required>
-                <option value="">Pilih program studi</option>
-                <option value="trpl">D4 TRPL</option>
-                <option value="ti">D3 Teknologi Informasi</option>
-            </select>
-            <label for="ticket">Jumlah Tiket (Wajib)</label>
-            <input id="ticket" name="ticket" type="number" min="1" max="5" step="1" value="1">
-
-            <fieldset>
-                <legend>Mode kehadiran (wajib)</legend>
-                <input id="luring" name="mode" type="radio" value="luring" required>
-                <label for="luring">Luring</label>
-                <input id="daring" name="mode" type="radio" value="daring">
-                <label for="daring">Daring</label>
-            </fieldset>
-            <fieldset>
-                <legend>Minat topik HTML</legend>
-                <input id="pilihan1" name="gambar" type="checkbox" value="topik" required>
-                <label for="pilihan1">Peletakan gambar</label>
-                <br>
-                <input id="pilihan2" name="form" type="checkbox" value="topik">
-                <label for="pilihan2">Pembuatan form</label>
-            </fieldset>
-            <fieldset>
-                <legend>Aksesibilitas</legend>
-                <input id="pilihan3" name="teks alternatif" type="checkbox" value="alternatif">
-                <label for="pilihan3">Teks alternatif pada gambar</label>
-                <br>
-                <input id="pilihan4" name="terjemahan" type="checkbox" value="terjemahan">
-                <label for="pilihan4">teks terjemahan</label>
-            </fieldset>
-            <label for="catatan">Catatan (opsional)</label>
-            <textarea id="catatan" name="catatan" rows="4" maxlength="300"></textarea>
-            <p>Formulir ini tidak bersifat transparan</p>
-            <button type="submit">Daftar</button>
-        </form>
-    </main>
- <script src="main.js"></script>
-<footer>
- <p>Dibuat untuk praktikum Pengembangan Situs Web I.</p>
-</footer>
+ <nav aria-label="Navigasi utama">
+ <ul class="nav-list">
+ <li><a href="#kegiatan">Kegiatan</a></li>
+ <li><a href="#kontak">Kontak</a></li>
+ </ul>
+</nav>
+<main id="kegiatan">
+ <h1>Kegiatan Mahasiswa IT DEL di Prodi DIV TRPL</h1>
+ <div class="cards">
+ <article class="card"><h2>Lokakarya HTML</h2><p>Belajar struktur.</p></article>
+ <article class="card"><h2>Diskusi CSS</h2><p>Belajar tampilan.</p></article>
+ <article class="card"><h2>Audit Web</h2><p>Menguji kualitas.</p></article>
+ <article class="card"><h2>kode JS</h2><p>Menguji Script.</p></article>
+ </div>
+</main>
+<footer id="kontak">Kontak: kegiatan@example.com</footer>
 </body>
 </html>

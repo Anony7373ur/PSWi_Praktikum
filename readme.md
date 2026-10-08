@@ -1,58 +1,63 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB "Selector, Cascade, dan Box Model"
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB (Navigasi dan Card dengan Flexbox)
 
-NAMA: GABRIEL CHRISTIAN RONALDO PANJAITAN
-NIM : 41426009
-PRODI: DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
+Nama    : Gabriel Christian Ronaldo Panjaitan
+NIM:    : 41426009
+Prodi   : DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
 
-Laporan Selector, Cascade, dan Box Model:
+Laporan:
 
-Tujuannya dibuat website ini ialah:
-Menghubungkan stylesheet eksternal dan memilih selector yaitu class sesuai kebutuhan dan Menelusuri konflik CSS melalui aturan cascade dan DevTools.
+Penggunaan AI: Saya tidak pernah memakai AI
 
-cara menjalankannya:
-membuat link untuk mengaitkan ke css external dengan <link rel="" href="">, kemudian membuat class pada form agar bisa gunakan di css dan di modif ke class yang kita seperti <form class="card"> dan jika ingin memodif tampilan dari form kita tersebut maka menggunakan .card atau kalo lebih spesifik form.card. dan didalamnya dibuat warna dari text tersebut yaitu color: purple dan color: orange.
-Properties yang dipakai dalam website ini adalah: width, padding, back border, color, background, dan margin. 
+Tujuan: Ini untuk melatih menggunakan flexbox yang dimana mengatur ukuran teks dan barisannya agar sesuai dengan tampilan layar halaman.
 
-Tindakan, hasil nyata, dan bukti:
-<link rel = "stylesheet" href="style.css">, hasilnya bisa menggunakan css external dari folder lain.
-Bukti: tampilan web berubah karena css
+Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa flex ini untuk membuat ukuran dari website menyesuaikan dengan layar perangkat
+jika memakai laptop atau handphone.
 
-form.card { padding: 1rem; background: white; }
-.notice { color: #175cd3; }
-hasilnya adalah background dari form putih dan padding nya 1rem dan <p> berubah warna jadi biru.
-Bukti: Background form jadi putih dan text class notice di <p> jadi warna biru
+Navigasi Fleksibel:
+.nav-list { display: flex; flex-wrap: wrap; gap: 1rem;
+ list-style: none; padding: 0; }
+ Tindakan: Meletakkan properti dari .nav-list yang berisi display: flex, flex-wrap, gap, list-style dan padding di css.
+ Hasil Nyata: Ini berfungsi untuk membuat tampilan dari teks nav berubah ke bawah dan tidak terpotong ketika layar diperkecil.
+ Bukti: Ketika diperkecil maka teks tetap tampak di layar tapi jika sampai diperkecil kali maka akan terpotong.
 
-.card p { color: purple; }
-.notice { color: orange; }
-hasilnya adalah text di .card p dan fokus ke <p> maka warna text <p> di dalam card akan berubah dan
-warna text dari .notice berubah ke orange. Buktinya adalah warna text <p> dalam form berubah ke ungu dan <p class="notice"> menjadi warna orange.
+Card Fleksibel:
+.cards { display: flex; flex-wrap: wrap; gap: 1rem; }
+.card { flex: 1 1 15rem; padding: 1rem;
+ border: 1px solid #ccd; min-width: 0; }
+ Tindakan: Meletakkan properti dari .cards dan .card antara lain flexbox, padding, border, dan min-width di css.
+ Hasil nyata: <div> yang ada class .cards menjadi sama seperti .nav-list yang dimana jika layar diperkecil maka teks akan menyesuaikan diri
+ dan turun ke bawah kemudian ada kotak sebagai pemisah dengan lain juga jarak menggunaakan flex: 1 1 15rem.
+ Bukti: Ketika layar diperkecil, maka tag yang ada class .cards dan .card menyesuaikan diri dengan teks turun ke bawah agar masih nampak.
 
-.card { width: 240px; padding: 16px;
- border: 2px solid #445; margin: 12px; }
- hasilnya adalah ukuran dari form jadi kecil dan jaraknya antar text dan luarnya agak jauh dan dilengkapi oleh garis tepi dan margin untuk jarak dari sisi website. Buktinya adalah formulir menjadi sebelah kiri dan panjang  box lebih pendek dan garis tepi agak tebal yang mengelilingi formulirnya.
+Konten panjang dan pengukuran:
+.card h2 { overflow-wrap: anywhere; }
+Tindakan: Meletakkan properti dari .card h2 di css dan lihat hasil.
+Hasil nyata: h2 dari tag yang mempunya class .card akan tidak akan melewati border yang dibuat jika layar diperkecil
+Bukti: Teks yang ada di h2 tidak terpotong maupun melewati border yang dibuat ketika layar diperkecil.
 
- 1. Kasus Normal:
- Tindakan: Menambahkan form.card { padding: 1rem; background: white; } .notice { color: #175cd3; }
- Hasil Aktual: Warna latar belakang form berubah ke putih dan paddingnya 1rem sedangkan warna text
-.notice di <p> berubah ke biru.
-Bukti/status: Berhasil (Screenshot tampilan halaman web)
-Hasilnya sesuai karena di html kita buat class dan untuk css, kita buat .card agar bisa hanya fokus styling pada
-class tersebut.
+Latihan mandiri dan matriks UJI:
+Kasus:
+1. 360px tanpa overflow maka teks menembus border dan garis, jika dibuat overflow maka akan turun dan tetap nampak.
+2. Empat Item maka jika diterapkan properti seperti .card dan .card h2 maka akan sama seperti card sebelumnya yang dimana teks turun dan nampak.
+3. Judul Panjang jika ditambah overflow-wrap : anywhere maka teks tidak akan terpotong dan melewati garis karena sama seperti tampilan card.
+4. Tab hasilnya adalah link masih tetap dibuka dengan cara di tab dan enter.
 
-2. Kasus Batas:
-Tindakan: Menambahkan .card p { color: purple; } .notice { color: orange; } tetapi tidak menambahkan <p> di form
-Hasil Aktual: warna text <P> pada form.card berubah menjadi ungu jika ditambahkan <p> pada form dan warna text .notice berubah ke orange.
-Bukti/Status: Berhasil tetapi warna <p> tidak berubah karena tidak menambahkan <p> di form 
+Format laporan:
 
-3. Kasus gagal:
-Tindakan: menambahkan .card { width: 240px; padding: 16px; border: 2px solid #445; margin: 12px; } berdasarkan box sizing = box border.
-Hasil Aktual: Tampilan tetap sama dan tidak ada perubahan kecuali bagian margin, width dan border. jika ditambah box sizing = box border, tidak ada perubahan sama sekali.
-Bukti/Status: Gagal
+Kasus normal :
+Tindakan: saya memasukkan .card h2 { overflow-wrap: anywhere; } di css
+Hasil Aktual: h2 didalam class card akan tidak memotong garis dan turun kebawah walaupun diperkecil layar sampai mentok.
+Bukti/status: Berhasil (ss .cards h2)
 
-Catatan validator sebelum:
-Terdapat error pada form action="" dan jika mengubah penamaan dari href atau class dari sebuah text tidak akan ada perubahan sama sekali.
+Kasus batasan
+Tindakan: Saya menambahi properti .cards { display: flex; flex-wrap: wrap; gap: 1rem; } dan .card { flex: 1 1 15rem; padding: 1rem;}
+Hasil aktual: Teks di dalam class .card dan h2 tidak akan terpotong  jika diperkecil layarnya tetapi teksnya melewati garis
+Bukti/status: Berhasil(ss .card dan .cards)
 
-catan Validator sesudah:
-Diperbaiki dengan menambahkan # pada form action="#"
+Kasus gagal:
+Tindakan: saya memasukkan .nav-list { display: flex; flex-wrap: wrap; gap: 1rem; list-style: none; padding: 0; }
+Hasil aktual: ukuran .nav-list tetap sama walaupun sudah ditambah flex karena ukuran teks kecil dan jika diperkecil layar sampe mentok, flex nya
+masih ada tidak sesuai.
+Bukti/status: Gagal(ss navigasi)
 
-MILESTONE: Saya sudah bisa membuat css dengan menggunakan class, padding, margin dan lainnya.
+Milestone: Saya sudah bisa belajar dan memahami cara pengunaan Display: flex, flex-wrap: wrap, flex: 1 1 15rem, dan overflow-wrap: anywhere.
