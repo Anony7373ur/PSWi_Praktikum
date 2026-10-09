@@ -1,0 +1,41 @@
+:root { --brand: #c8d6ef;
+     --space: 1rem;
+ --surface: white; 
+ --ink: #243244; }
+
+body {
+ max-width: 50rem;
+ margin: 0 auto;
+ padding: 1rem;
+ font-family: Arial, sans-serif;
+ line-height: 1.6;
+ color: #222;
+ background: #f5f5f5;
+}
+header, main {
+ padding: 1rem; margin-bottom: 1rem;
+ background: white; border: 1px solid #ddd;
+}
+h1 { color: #740000; 
+    overflow-wrap: anywhere;
+}
+
+.catalog { display: grid; gap: 1rem;
+ grid-template-columns: 1fr 1fr; }
+
+ .catalog { grid-template-columns:
+ repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+
+button { padding: .75rem 1rem; color: white; background: #293d7a; border: 0; }
+
+.nav-list { display: flex; flex-wrap: wrap; gap: 1rem;
+ list-style: none; padding: 0; }
+ 
+.card { padding: var(--space-2, 1rem); }
+
+.card { flex: 1 1 15rem; padding: 1rem; border: 1px solid #ccd; min-width: 0; }
+.card h2 { overflow-wrap: anywhere; }
+
+.card { display: flex; flex-direction: column; gap: .5rem; }
+.card h2, .card p { margin: 0; }
+.card a { align-self: start; }

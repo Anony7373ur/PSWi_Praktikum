@@ -1,4 +1,4 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB (Navigasi dan Card dengan Flexbox)
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB (CSS Grid dan Class yang Dapat Dipakai Ulang)
 
 Nama    : Gabriel Christian Ronaldo Panjaitan
 NIM:    : 41426009
@@ -8,56 +8,66 @@ Laporan:
 
 Penggunaan AI: Saya tidak pernah memakai AI
 
-Tujuan: Ini untuk melatih menggunakan flexbox yang dimana mengatur ukuran teks dan barisannya agar sesuai dengan tampilan layar halaman.
+Tujuan: Ini untuk melatih dan belajar menggunakan Grid beserta properti nya dan class yang dapat dipakai ulang
+dengan mengganti nama class.
 
-Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa flex ini untuk membuat ukuran dari website menyesuaikan dengan layar perangkat
-jika memakai laptop atau handphone.
+Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa grid sama seperti flexbox tapi berbeda karena grid fokus ke layout yang biasa diatur seperti align-content, justify-content, align-items, dan justify-items jadi lebih fokus ke mengatur layout item tetapi masih bisa menyesuaikan dengan layar perangkat.
 
-Navigasi Fleksibel:
-.nav-list { display: flex; flex-wrap: wrap; gap: 1rem;
- list-style: none; padding: 0; }
- Tindakan: Meletakkan properti dari .nav-list yang berisi display: flex, flex-wrap, gap, list-style dan padding di css.
- Hasil Nyata: Ini berfungsi untuk membuat tampilan dari teks nav berubah ke bawah dan tidak terpotong ketika layar diperkecil.
- Bukti: Ketika diperkecil maka teks tetap tampak di layar tapi jika sampai diperkecil kali maka akan terpotong.
+Mengubah Container:
+.catalog { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+ Tindakan: Meletakkan properti dari .catalog ke css yang berisi display: grid, gap, grid-template-columns.
+ Hasil nyata: Layout dari class .catalog berubah jadi berbaris seperti kardus kardus yang ditumpuk rapi jadi fungsinya
+hampir sama dengan flex tetapi lebih rapi karena kita menggunakan item yang dimana harus menyesuaikan dengan layar perangkat.
+ Bukti: Ketika diperkecil maka kotak beserta text dari .catalog akan berpindah ke bawah dalam struktur yang utuh & rapi
 
-Card Fleksibel:
-.cards { display: flex; flex-wrap: wrap; gap: 1rem; }
-.card { flex: 1 1 15rem; padding: 1rem;
- border: 1px solid #ccd; min-width: 0; }
- Tindakan: Meletakkan properti dari .cards dan .card antara lain flexbox, padding, border, dan min-width di css.
- Hasil nyata: <div> yang ada class .cards menjadi sama seperti .nav-list yang dimana jika layar diperkecil maka teks akan menyesuaikan diri
- dan turun ke bawah kemudian ada kotak sebagai pemisah dengan lain juga jarak menggunaakan flex: 1 1 15rem.
- Bukti: Ketika layar diperkecil, maka tag yang ada class .cards dan .card menyesuaikan diri dengan teks turun ke bawah agar masih nampak.
 
-Konten panjang dan pengukuran:
-.card h2 { overflow-wrap: anywhere; }
-Tindakan: Meletakkan properti dari .card h2 di css dan lihat hasil.
-Hasil nyata: h2 dari tag yang mempunya class .card akan tidak akan melewati border yang dibuat jika layar diperkecil
-Bukti: Teks yang ada di h2 tidak terpotong maupun melewati border yang dibuat ketika layar diperkecil.
+Grid Adaptif:
+.catalog { grid-template-columns:
+ repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+ Tindakan: Meletakkan properti dari .catalog yaitu grid-template-columns, repeat, autofit, dan minmax.
+ Hasil nyata: properti tersebut memungkinkan item nya akan auto menyesuaikan dan terstruktur. kolom akan diulangi
+dengan autofit dan ukurannya yaitu max 15 rem dengan min 100% 1 fr.
+ Bukti: Ketika layar diperkecil, maka item akan otomatis menyesuaikan diri berurutan ke bawah dengan ukuran yang tetap yaitu 15 rem, sudah dicoba di ukuran 320, 768px, dan 1200px
+
+Card internal dan Gap:
+.card { display: flex; flex-direction: column; gap: .5rem; }
+.card h2, .card p { margin: 0; }
+.card a { align-self: start; }
+Tindakan: Menambahkan properti dari .card, .card h2, .card a ke css
+Hasil nyata: tag yang mempunyai class .card akan menyesuaikan diri dengan layar perangkat dan arah penyesuaiannya adalah kolom dengan jarak 0.5rem, kemudian h2 dan p di .card tetap margin 0, dan terakhir .card a yang dimana align nya akan mulai sendiri.
+Bukti: Ketika Layar diperkecil, maka item atau tag yang mempunya class di atas kana menyesuaikan diri dengan layar perangkat dan peletakan teks link nya akan sama dan tidak turun kebawah.
+
+Review Layout:
+/* urutan konten tetap ditentukan HTML */
+.card { padding: var(--space-2, 1rem); }
+Tindakan: Menempatkan .card di bawah properti .card yang sudah dibuat di css.
+Hasil nyata: tag yang mempunyai .card akan diterapkan properti sebagai berikut yaitu padding sesuai dengan var --space yang ada di :root dan 1 rem.
+Bukti: Ketika layar diperkecil, maka jarak dari tag yang mempunyai class .card akan berjarak 1 rem dan dari variabel.
 
 Latihan mandiri dan matriks UJI:
 Kasus:
-1. 360px tanpa overflow maka teks menembus border dan garis, jika dibuat overflow maka akan turun dan tetap nampak.
-2. Empat Item maka jika diterapkan properti seperti .card dan .card h2 maka akan sama seperti card sebelumnya yang dimana teks turun dan nampak.
-3. Judul Panjang jika ditambah overflow-wrap : anywhere maka teks tidak akan terpotong dan melewati garis karena sama seperti tampilan card.
-4. Tab hasilnya adalah link masih tetap dibuka dengan cara di tab dan enter.
+1. 320px tanpa overflow maka teks menembus border dan garis, jika dibuat overflow maka akan turun dan tetap nampak.
+2. satu card = card tetap terbaca karena masih diterapkan properti .card yang ketika layar diperkecil, satu card tetap menyesuaikan meskipun tidak ada card
+3. Lima card = auto placement benar karena memakai display: grid yang dimana setiap item yang memakai class .card akan dideteksi sebagai kolom dan baris yang akan disusun rapi, jika layar diperkecil maka 5 card tersebut akan menyesuaikan dengan layar dan jarak nya masih tetap teratur.
+4. Urutan tab = sama dengan alur dom berarti jika dalam ukuran normal, link kedua akan disamping di link satu tapi jika diperkecil sampai mentok maka link kedua akan dibawah link pertama yang berarti sesuai DOM.
 
 Format laporan:
 
 Kasus normal :
-Tindakan: saya memasukkan .card h2 { overflow-wrap: anywhere; } di css
-Hasil Aktual: h2 didalam class card akan tidak memotong garis dan turun kebawah walaupun diperkecil layar sampai mentok.
-Bukti/status: Berhasil (ss .cards h2)
+Tindakan: saya memasukkan .catalog { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+Hasil Aktual: tag yang classnya .catalog akan memakai template kolom grid yang dimana ketika diperkecil akan otomatis dipaskan sesuai gridnya dengan min 100% dan max nya adalah 15 rem dan kolom nya adalah 1 fr
+Bukti/status: Berhasil (ss tampilan halaman)
 
 Kasus batasan
-Tindakan: Saya menambahi properti .cards { display: flex; flex-wrap: wrap; gap: 1rem; } dan .card { flex: 1 1 15rem; padding: 1rem;}
-Hasil aktual: Teks di dalam class .card dan h2 tidak akan terpotong  jika diperkecil layarnya tetapi teksnya melewati garis
-Bukti/status: Berhasil(ss .card dan .cards)
+Tindakan: Saya menambahi .card { display: flex; flex-direction: column; gap: .5rem; }
+.card h2, .card p { margin: 0; }
+.card a { align-self: start; }
+Hasil aktual: Tag yang ada class .card, .card h2, dan .card a akan mengikuti properti disini dan hampir sama dengan kasus normal tapi masih ada batasan yang dimana bagian align-self: start yang tidak tampak hasilnya.
+Bukti/status: Berhasil(ss tampilan halaman web)
 
 Kasus gagal:
-Tindakan: saya memasukkan .nav-list { display: flex; flex-wrap: wrap; gap: 1rem; list-style: none; padding: 0; }
-Hasil aktual: ukuran .nav-list tetap sama walaupun sudah ditambah flex karena ukuran teks kecil dan jika diperkecil layar sampe mentok, flex nya
-masih ada tidak sesuai.
-Bukti/status: Gagal(ss navigasi)
+Tindakan: Saya memasukkan .card { padding: var(--space-2, 1rem); } di css
+Hasil aktual: jika tidak ada :root maka padding tidak bekerja sama sekali dan memakai 1rem.
+Bukti/status: Gagal
 
-Milestone: Saya sudah bisa belajar dan memahami cara pengunaan Display: flex, flex-wrap: wrap, flex: 1 1 15rem, dan overflow-wrap: anywhere.
+Milestone: Saya sudah bisa belajar dan memahami cara pengunaan Display: grid, grid-template-columns, repeat, autofit, minmax, flex-direction: column, dan align-self: start.
