@@ -1,4 +1,4 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB (CSS Grid dan Class yang Dapat Dipakai Ulang)
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Mobile-first dan Media Query
 
 Nama    : Gabriel Christian Ronaldo Panjaitan
 NIM:    : 41426009
@@ -8,66 +8,74 @@ Laporan:
 
 Penggunaan AI: Saya tidak pernah memakai AI
 
-Tujuan: Ini untuk melatih dan belajar menggunakan Grid beserta properti nya dan class yang dapat dipakai ulang
-dengan mengganti nama class.
+Tujuan: Ini untuk melatih dan belajar menggunakan menggunakan @media sebagai alternatif lain jika ukuran layar tidak sesuai dengan yang di desktop dan ketika kondisi terpenuhi maka akan mengeksekusi style yang ada didalam @media. 
 
-Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa grid sama seperti flexbox tapi berbeda karena grid fokus ke layout yang biasa diatur seperti align-content, justify-content, align-items, dan justify-items jadi lebih fokus ke mengatur layout item tetapi masih bisa menyesuaikan dengan layar perangkat.
+Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa penggunaan @media seperti if jika kondisi terpenuhi maka akan dilakukan style tersebut jika tidak maka jangan lakukan, ternyata fungsi @media tidak hanya itu saja. Kemudian saya perhatikan kalau modul ini fokus memeriksa adaptasi layar dan menguji setiap cobaan agar saya tau bagaimana kode yang ada di HTML. 
 
-Mengubah Container:
-.catalog { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
- Tindakan: Meletakkan properti dari .catalog ke css yang berisi display: grid, gap, grid-template-columns.
- Hasil nyata: Layout dari class .catalog berubah jadi berbaris seperti kardus kardus yang ditumpuk rapi jadi fungsinya
-hampir sama dengan flex tetapi lebih rapi karena kita menggunakan item yang dimana harus menyesuaikan dengan layar perangkat.
- Bukti: Ketika diperkecil maka kotak beserta text dari .catalog akan berpindah ke bawah dalam struktur yang utuh & rapi
+Starter Mobile:
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ Tindakan: Meletakkan metadata di HTML bagian HEAD
+ Hasil nyata: Metadata ini berguna agar ukuran halaman dari web kita bisa menyesuaikan diri dengan perangkat layar masing masing seperti
+ handphone, desktop, tv dan sebagainya.
+ Bukti: Ketika layar tampilan halaman web diperkecil maka teks dan isinya akan mengecil dan menyesuaikan. Ketika dibuat 320px maka tampilan halaman web akan menyesuaikan dengan layar perangkat yang diperkecil. (ss 320px)
 
 
-Grid Adaptif:
-.catalog { grid-template-columns:
- repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
- Tindakan: Meletakkan properti dari .catalog yaitu grid-template-columns, repeat, autofit, dan minmax.
- Hasil nyata: properti tersebut memungkinkan item nya akan auto menyesuaikan dan terstruktur. kolom akan diulangi
-dengan autofit dan ukurannya yaitu max 15 rem dengan min 100% 1 fr.
- Bukti: Ketika layar diperkecil, maka item akan otomatis menyesuaikan diri berurutan ke bawah dengan ukuran yang tetap yaitu 15 rem, sudah dicoba di ukuran 320, 768px, dan 1200px
+Breakpoint Konten:
+.catalog { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 48rem) {
+ .catalog { grid-template-columns: repeat(2, 1fr); }
+}
+ Tindakan: Meletakkan properti dari .catalog dan @media beserta isinya.
+ Hasil nyata: Properti .catalog membuat item berurutan dengan item lain yang menggunakan properti sama dengan gap 1rem dan columns 1 fr.
+ Bukti: Pada bagian @media yang dimana kondisinya adalah min-width: 48rem. Jika layar diperkecil menjadi sekitaran 48rem maka isi dari @media akan
+ berjalan dan akan memakai properti dari .catalog di @media. Layar di 767px, item masih bisa horizontal. Layar di 768px, item sudah mau horizontal dan item mulai vertikal ke bawah dan 769px vertikal ke bawah. (ss 767px, 768px, 769px)
 
-Card internal dan Gap:
-.card { display: flex; flex-direction: column; gap: .5rem; }
-.card h2, .card p { margin: 0; }
-.card a { align-self: start; }
-Tindakan: Menambahkan properti dari .card, .card h2, .card a ke css
-Hasil nyata: tag yang mempunyai class .card akan menyesuaikan diri dengan layar perangkat dan arah penyesuaiannya adalah kolom dengan jarak 0.5rem, kemudian h2 dan p di .card tetap margin 0, dan terakhir .card a yang dimana align nya akan mulai sendiri.
-Bukti: Ketika Layar diperkecil, maka item atau tag yang mempunya class di atas kana menyesuaikan diri dengan layar perangkat dan peletakan teks link nya akan sama dan tidak turun kebawah.
+Navigasi dan Form:
+.nav-list { display: flex; flex-wrap: wrap; gap: .75rem; }
+input, select, textarea { max-width: 100%; }
+Tindakan: Menambahkan properti .nav-list ke css dan input, select, textarea ke css.
+Hasil nyata: tag yang memiliki class .nav-list akan menyesuaikan diri dengan layar dan teksnya akan tidak melewati garis kemudian jarak antar teks
+yaitu .75rem. max-width di input, select, dan textarea dipakai agar ukuran tidak melebihi ukuran asli perangkat jadi dibuat 100%.
+Bukti: Ketika layar diperkecil maka teks yang ada di navigasi masih di fokuskan, ukuran teks disesuaikan dengan layar dan jarak antar teks itu .75
+(ss tab navigasi)
 
-Review Layout:
-/* urutan konten tetap ditentukan HTML */
-.card { padding: var(--space-2, 1rem); }
-Tindakan: Menempatkan .card di bawah properti .card yang sudah dibuat di css.
-Hasil nyata: tag yang mempunyai .card akan diterapkan properti sebagai berikut yaitu padding sesuai dengan var --space yang ada di :root dan 1 rem.
-Bukti: Ketika layar diperkecil, maka jarak dari tag yang mempunyai class .card akan berjarak 1 rem dan dari variabel.
+Matriks Viewport:
+/* jika item tidak boleh mempertahankan lebar minimum besar */
+.card { min-width: 0; }
+Tindakan: Menempatkan .card di css.
+Hasil nyata: tag yang mempunyai .card akan diterapkan properti minimal lebar nya yaitu 0 dan tidak bisa kurang
+Bukti: Tidak ada scroll horizontal akibat elemen yang terlalu lebar. 320px, 768px, dan 1200px masih tidak bisa scroll horizontal. Saya menambah
+satu overflow dengan width 900px dan bisa discroll ke kanan walaupun tidak ada yang berubah dari tampilannya. (ss 320px, 768px, 1200px, zoom 200%, dan overflow width 900px)
 
 Latihan mandiri dan matriks UJI:
 Kasus:
-1. 320px tanpa overflow maka teks menembus border dan garis, jika dibuat overflow maka akan turun dan tetap nampak.
-2. satu card = card tetap terbaca karena masih diterapkan properti .card yang ketika layar diperkecil, satu card tetap menyesuaikan meskipun tidak ada card
-3. Lima card = auto placement benar karena memakai display: grid yang dimana setiap item yang memakai class .card akan dideteksi sebagai kolom dan baris yang akan disusun rapi, jika layar diperkecil maka 5 card tersebut akan menyesuaikan dengan layar dan jarak nya masih tetap teratur.
-4. Urutan tab = sama dengan alur dom berarti jika dalam ukuran normal, link kedua akan disamping di link satu tapi jika diperkecil sampai mentok maka link kedua akan dibawah link pertama yang berarti sesuai DOM.
+1. 320px karena memakai metadata dan display flex juga grid, maka konten masih ada walaupun layar diperkecil.
+2. Sekitar breakpoint = query yang ada di @media aktif ketika layar diperkecil sekitar 768px yang dimana item akan berpindah menjadi vertikal kebawah
+3. Zoom 200% = Konten masih tetap ada walaupun di zoom 200%
+4. Keyboard = Fokus masih tampak di nav list walaupun layar diperkecil.
 
 Format laporan:
 
 Kasus normal :
-Tindakan: saya memasukkan .catalog { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
-Hasil Aktual: tag yang classnya .catalog akan memakai template kolom grid yang dimana ketika diperkecil akan otomatis dipaskan sesuai gridnya dengan min 100% dan max nya adalah 15 rem dan kolom nya adalah 1 fr
-Bukti/status: Berhasil (ss tampilan halaman)
+Tindakan: Saya menambahi .catalog { display: grid; gap: 1rem; grid-template-columns: 1fr; } di CSS
+@media (min-width: 48rem) {
+ .catalog { grid-template-columns: repeat(2, 1fr); }
+}
+Hasil Aktual: Ketika layar diperkecil ke 768px, maka query yang di @media akan aktif dan item akan berpindah vertikal ke bawah.
+Bukti/status: Berhasil (ss 767px, 768px, dan 769px)
 
 Kasus batasan
-Tindakan: Saya menambahi .card { display: flex; flex-direction: column; gap: .5rem; }
-.card h2, .card p { margin: 0; }
-.card a { align-self: start; }
-Hasil aktual: Tag yang ada class .card, .card h2, dan .card a akan mengikuti properti disini dan hampir sama dengan kasus normal tapi masih ada batasan yang dimana bagian align-self: start yang tidak tampak hasilnya.
-Bukti/status: Berhasil(ss tampilan halaman web)
+Tindakan: Saya menambahi .nav-list { display: flex; flex-wrap: wrap; gap: .75rem; } di CSS
+input, select, textarea { max-width: 100%; }
+Hasil aktual: Teks di navigasi akan menyesuaikan dengan layar perangkat dan masih bisa difokuskan tetapi jika diperbesar kali maka tidak akan melewati ukuran layar perangkat yaitu menggunakan max-width 100%
+Bukti/status: Berhasil(ss Tab navigasi)
 
 Kasus gagal:
-Tindakan: Saya memasukkan .card { padding: var(--space-2, 1rem); } di css
-Hasil aktual: jika tidak ada :root maka padding tidak bekerja sama sekali dan memakai 1rem.
-Bukti/status: Gagal
+Tindakan: Saya memasukkan .card { min-width: 0; } di CSS
+Hasil aktual: ini sebagai mengetes perangkat layar yaitu 320px, 768px, 1200px, zoom 200% dan menguji overflow yang width 900px
+Bukti/status: Gagal (ss 900px,320px, 768px, 1200x, dan zoom 200%)
 
-Milestone: Saya sudah bisa belajar dan memahami cara pengunaan Display: grid, grid-template-columns, repeat, autofit, minmax, flex-direction: column, dan align-self: start.
+Milestone: Saya sudah bisa belajar dan memahami cara pengunaan query @media yang aktif ketika kondisi layar terpenuhi dan saya sudah menguasai 
+pembelajaran praktikum sebelumnya
+backlog: Devtool device toolbar untuk menguji tampilan halaman web pada perangkat berbeda
+buglog: terjadi masalah saat ada beberapa .catalog yang masih ada di css sebelumnya kemudian saya perbaiki dengan menghapus.

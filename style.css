@@ -3,6 +3,11 @@
  --surface: white; 
  --ink: #243244; }
 
+.catalog { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 48rem) {
+ .catalog { grid-template-columns: repeat(2, 1fr); }
+}
+
 body {
  max-width: 50rem;
  margin: 0 auto;
@@ -20,22 +25,22 @@ h1 { color: #740000;
     overflow-wrap: anywhere;
 }
 
-.catalog { display: grid; gap: 1rem;
- grid-template-columns: 1fr 1fr; }
-
- .catalog { grid-template-columns:
- repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
-
 button { padding: .75rem 1rem; color: white; background: #293d7a; border: 0; }
 
 .nav-list { display: flex; flex-wrap: wrap; gap: 1rem;
  list-style: none; padding: 0; }
  
+.nav-list { display: flex; flex-wrap: wrap; gap: .75rem; }
+input, select, textarea { max-width: 100%; }
+
 .card { padding: var(--space-2, 1rem); }
 
 .card { flex: 1 1 15rem; padding: 1rem; border: 1px solid #ccd; min-width: 0; }
-.card h2 { overflow-wrap: anywhere; }
+.card h2, .card p { overflow-wrap: anywhere; }
 
 .card { display: flex; flex-direction: column; gap: .5rem; }
 .card h2, .card p { margin: 0; }
 .card a { align-self: start; }
+
+/* jika item tidak boleh mempertahankan lebar minimum besar */
+.card { min-width: 0; }
