@@ -7,6 +7,14 @@
 @media (min-width: 48rem) {
  .catalog { grid-template-columns: repeat(2, 1fr); }
 }
+@media (prefers-reduced-motion: reduce) {
+ .card { transition: none; }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 body {
  max-width: 50rem;
@@ -15,32 +23,39 @@ body {
  font-family: Arial, sans-serif;
  line-height: 1.6;
  color: #222;
- background: #f5f5f5;
+ background: linear-gradient(rgb(155, 46, 46), rgb(80, 80, 236), rgb(154, 223, 154));
 }
 header, main {
  padding: 1rem; margin-bottom: 1rem;
- background: white; border: 1px solid #ddd;
+ background: radial-gradient(rgb(255, 221, 0), rgb(71, 71, 71)); border: 1px solid #ddd;
 }
-h1 { color: #740000; 
+h1 { color: rgb(243, 57, 57); 
     overflow-wrap: anywhere;
 }
+
+h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); }
+.card-wrap { container-type: inline-size; }
+@container (min-width: 30rem) {
+ .card { padding: 1.5rem; }
+}
+
 
 button { padding: .75rem 1rem; color: white; background: #293d7a; border: 0; }
 
 .nav-list { display: flex; flex-wrap: wrap; gap: 1rem;
- list-style: none; padding: 0; }
+ list-style: none; padding: 0;}
  
 .nav-list { display: flex; flex-wrap: wrap; gap: .75rem; }
 input, select, textarea { max-width: 100%; }
 
 .card { padding: var(--space-2, 1rem); }
 
-.card { flex: 1 1 15rem; padding: 1rem; border: 1px solid #ccd; min-width: 0; }
+.card { flex: 1 1 15rem; padding: 1rem; border: 1px solid #ccd; min-width: 0; background: radial-gradient(rgb(180, 3, 180), rgb(60, 60, 60)); }
 .card h2, .card p { overflow-wrap: anywhere; }
 
 .card { display: flex; flex-direction: column; gap: .5rem; }
-.card h2, .card p { margin: 0; }
-.card a { align-self: start; }
+.card h2, .card p { margin: 0; color: white;}
+.card a { align-self: start; color: rgb(54, 232, 255); }
 
 /* jika item tidak boleh mempertahankan lebar minimum besar */
 .card { min-width: 0; }

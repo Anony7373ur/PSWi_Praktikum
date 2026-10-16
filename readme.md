@@ -1,4 +1,4 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Mobile-first dan Media Query
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Gambar Responsif, Fluid Sizing, dan Preferensi Pengguna
 
 Nama    : Gabriel Christian Ronaldo Panjaitan
 NIM:    : 41426009
@@ -8,74 +8,74 @@ Laporan:
 
 Penggunaan AI: Saya tidak pernah memakai AI
 
-Tujuan: Ini untuk melatih dan belajar menggunakan menggunakan @media sebagai alternatif lain jika ukuran layar tidak sesuai dengan yang di desktop dan ketika kondisi terpenuhi maka akan mengeksekusi style yang ada didalam @media. 
+Tujuan: Ini untuk melatih dan belajar untuk membuat gambar responsif sesuai dengan perangkat layar dan membuat kode unutk preferensi penggunaan
 
 Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa penggunaan @media seperti if jika kondisi terpenuhi maka akan dilakukan style tersebut jika tidak maka jangan lakukan, ternyata fungsi @media tidak hanya itu saja. Kemudian saya perhatikan kalau modul ini fokus memeriksa adaptasi layar dan menguji setiap cobaan agar saya tau bagaimana kode yang ada di HTML. 
 
-Starter Mobile:
-<meta name="viewport" content="width=device-width, initial-scale=1">
- Tindakan: Meletakkan metadata di HTML bagian HEAD
- Hasil nyata: Metadata ini berguna agar ukuran halaman dari web kita bisa menyesuaikan diri dengan perangkat layar masing masing seperti
- handphone, desktop, tv dan sebagainya.
- Bukti: Ketika layar tampilan halaman web diperkecil maka teks dan isinya akan mengecil dan menyesuaikan. Ketika dibuat 320px maka tampilan halaman web akan menyesuaikan dengan layar perangkat yang diperkecil. (ss 320px)
+Gambar Fleksibel:
+img { max-width: 100%; height: auto; }
+ Tindakan: Meletakkan properti img di css.
+ Hasil nyata: Properti ini membuat untuk image nya berubah ukuran sesuai layar perangkat
+ Bukti: Ketika layar perangkat diperkecil dari viewport maka gambar akan tetap menyesuaikan lebar dari gambar dengan ketinggian yang otomatis diatur sesuai dengan layar. (ss max-width 100% yang besar dan kecil)
 
 
-Breakpoint Konten:
-.catalog { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media (min-width: 48rem) {
- .catalog { grid-template-columns: repeat(2, 1fr); }
+Kandidat Resolusi:
+<img src="foto-640.jpg"
+ srcset="foto-320.jpg 320w, foto-640.jpg 640w"
+ sizes="(min-width: 48rem) 50vw, 92vw"
+ width="640" height="360" alt="Kegiatan diskusi mahasiswa">
+ Tindakan: Meletakkan tag di bagian HTML disertakan source gambar yang sesuai gambar yang di folder
+ Hasil nyata: Gambar akan menyesuaikan sesuai min-width dari layar jadi jika diperkecil maka gambar akan mengecil tapi menyentuh tepi website.
+ Bukti: Resolusi dari gambar tetap dipertahankan tapi ukuran akan berkecil jika viewport diperkecil. (ss 320px dan 640px gambar resolusi)
+
+FLUID FONT DAN CONTAINER QUERY
+h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); }
+.card-wrap { container-type: inline-size; }
+@container (min-width: 30rem) {
+ .card { padding: 1.5rem; }
 }
- Tindakan: Meletakkan properti dari .catalog dan @media beserta isinya.
- Hasil nyata: Properti .catalog membuat item berurutan dengan item lain yang menggunakan properti sama dengan gap 1rem dan columns 1 fr.
- Bukti: Pada bagian @media yang dimana kondisinya adalah min-width: 48rem. Jika layar diperkecil menjadi sekitaran 48rem maka isi dari @media akan
- berjalan dan akan memakai properti dari .catalog di @media. Layar di 767px, item masih bisa horizontal. Layar di 768px, item sudah mau horizontal dan item mulai vertikal ke bawah dan 769px vertikal ke bawah. (ss 767px, 768px, 769px)
+Tindakan: Menambahkan properti h1 dan .card-wrap ke CSS.
+Hasil nyata: Fontsize akan berubah sesuai layar perangkat dari 1.75rem, 1.2rem. untuk .card, teks tidak akan memanjang lebih dari aslinya dan akan turun ke bawah buat baris baru. untuk @container, jika layar perangkat di 30rem maka .card akan ada padding sejauh 1.5rem.
+Bukti: Ketika layar diperkecil, teks di h1 akan turun ke bawah tetapi ukuran teks tidak banyak berubah. teks di .card-wrap akan buat baris ke bawah jika sudah hampir ke tepi dan container bekerja jika layar dibawah 30rem yang dimana akan membuat padding 1.5rem. (ss sebelum query @container dan sesudah query)
 
-Navigasi dan Form:
-.nav-list { display: flex; flex-wrap: wrap; gap: .75rem; }
-input, select, textarea { max-width: 100%; }
-Tindakan: Menambahkan properti .nav-list ke css dan input, select, textarea ke css.
-Hasil nyata: tag yang memiliki class .nav-list akan menyesuaikan diri dengan layar dan teksnya akan tidak melewati garis kemudian jarak antar teks
-yaitu .75rem. max-width di input, select, dan textarea dipakai agar ukuran tidak melebihi ukuran asli perangkat jadi dibuat 100%.
-Bukti: Ketika layar diperkecil maka teks yang ada di navigasi masih di fokuskan, ukuran teks disesuaikan dengan layar dan jarak antar teks itu .75
-(ss tab navigasi)
 
-Matriks Viewport:
-/* jika item tidak boleh mempertahankan lebar minimum besar */
-.card { min-width: 0; }
+REDUCED MOTION DAN AUDIT:
+@media (prefers-reduced-motion: reduce) {
+ .card { transition: none; }
+}
 Tindakan: Menempatkan .card di css.
-Hasil nyata: tag yang mempunyai .card akan diterapkan properti minimal lebar nya yaitu 0 dan tidak bisa kurang
-Bukti: Tidak ada scroll horizontal akibat elemen yang terlalu lebar. 320px, 768px, dan 1200px masih tidak bisa scroll horizontal. Saya menambah
-satu overflow dengan width 900px dan bisa discroll ke kanan walaupun tidak ada yang berubah dari tampilannya. (ss 320px, 768px, 1200px, zoom 200%, dan overflow width 900px)
+Hasil nyata: Jika pengguna memilih motion nya direndahkan maka transisi dari tag .card akan mati
+Bukti:Ketika layar diperkecil, Item tidak akan ada transisi yang membuat pengguna tidak nyaman ketika layar  diperkecil atau di perangkat layarnya. (ss reduced motion)
 
 Latihan mandiri dan matriks UJI:
 Kasus:
-1. 320px karena memakai metadata dan display flex juga grid, maka konten masih ada walaupun layar diperkecil.
-2. Sekitar breakpoint = query yang ada di @media aktif ketika layar diperkecil sekitar 768px yang dimana item akan berpindah menjadi vertikal kebawah
-3. Zoom 200% = Konten masih tetap ada walaupun di zoom 200%
-4. Keyboard = Fokus masih tampak di nav list walaupun layar diperkecil.
+1. Gambar Path = Gambar bisa tampil di web dengan path images/City.PNG
+2. Container sempit/lebar = Berdasar query di @container membuat jarak padding 1.5rem
+3. Zoom 200% = Konten masih tampak meskipun di zoom
+4. Reduced Motion = Transisi opsional tidak tampak tapi berfungsi
 
 Format laporan:
 
 Kasus normal :
-Tindakan: Saya menambahi .catalog { display: grid; gap: 1rem; grid-template-columns: 1fr; } di CSS
-@media (min-width: 48rem) {
- .catalog { grid-template-columns: repeat(2, 1fr); }
-}
-Hasil Aktual: Ketika layar diperkecil ke 768px, maka query yang di @media akan aktif dan item akan berpindah vertikal ke bawah.
-Bukti/status: Berhasil (ss 767px, 768px, dan 769px)
+Tindakan: Saya menambahi h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); } .card-wrap { container-type: inline-size; }
+@container (min-width: 30rem) {
+ .card { padding: 1.5rem; }
+} di css
+Hasil Aktual: Ketika diperkecil, item di card berpindah ke bawah secara vertikal dan tidak menyamping karena kondisi ukuran layar memenuhi di query sesuai harapan
+Bukti/status: Berhasil (ss sebelum dan sesudah query @container)
 
 Kasus batasan
-Tindakan: Saya menambahi .nav-list { display: flex; flex-wrap: wrap; gap: .75rem; } di CSS
-input, select, textarea { max-width: 100%; }
-Hasil aktual: Teks di navigasi akan menyesuaikan dengan layar perangkat dan masih bisa difokuskan tetapi jika diperbesar kali maka tidak akan melewati ukuran layar perangkat yaitu menggunakan max-width 100%
-Bukti/status: Berhasil(ss Tab navigasi)
+Tindakan: Saya menambahi <img src="foto-640.jpg" srcset="foto-320.jpg 320w, foto-640.jpg 640w" sizes="(min-width: 48rem) 50vw, 92vw"
+ width="640" height="360" alt="Kegiatan diskusi mahasiswa">
+Hasil aktual: Gambar kedua yang sesuai dengan resolusi akan tampil seperti 320px dan jika layar diperbesar maka resolusi gambar pertama menggantikan. ekspektasi berbeda karena gambar tidak berubah sama sekali dan hanya resolusi gambar yang menyesuaikan dengan layar.
+Bukti/status: Berhasil(ss 320px dan 640px gambar resolusi)
 
 Kasus gagal:
-Tindakan: Saya memasukkan .card { min-width: 0; } di CSS
-Hasil aktual: ini sebagai mengetes perangkat layar yaitu 320px, 768px, 1200px, zoom 200% dan menguji overflow yang width 900px
-Bukti/status: Gagal (ss 900px,320px, 768px, 1200x, dan zoom 200%)
+Tindakan: Saya memasukkan @media (prefers-reduced-motion: reduce) 
+ .card { transition: none; }
+Hasil aktual: tidak ada  perubahan apapun bahkan jika diperkecil meskipun sudah memakai devtool
+Bukti/status: Gagal (ss reduced motion)
 
-Milestone: Saya sudah bisa belajar dan memahami cara pengunaan query @media yang aktif ketika kondisi layar terpenuhi dan saya sudah menguasai 
-pembelajaran praktikum sebelumnya
-backlog: Devtool device toolbar untuk menguji tampilan halaman web pada perangkat berbeda
-buglog: terjadi masalah saat ada beberapa .catalog yang masih ada di css sebelumnya kemudian saya perbaiki dengan menghapus.
+Milestone: Saya sudah bisa belajar dan memahami cara membuat gambar responsif dan item yang berpindah ke bawah ketika query @container memenuhi.
+backlog: Devtool viewport untuk mengatur ukuran layar dan rendering untuk menguji transisi dari .card
+buglog: terjadi masalah saat membuat gambar resolusi dan transisi item.
