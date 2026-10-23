@@ -1,4 +1,4 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Integrasi Situs Multipage (WEEK 7 -- seminggu sebelum UTS)
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Branch, Merge, dan Code Review (WEEK 7 -- seminggu sebelum UTS)
 
 Nama    : Gabriel Christian Ronaldo Panjaitan
 NIM:    : 41426009
@@ -8,31 +8,30 @@ Laporan:
 
 Penggunaan AI: *Saya tidak pernah memakai AI*
 
-Tujuan: Ini untuk melatih dan belajar untuk mengintegrasikan beberapa halaman dengan navigasi dan gaya konsisten di css.
+Tujuan: Ini untuk melatih dan belajar untuk bisa membuat branch baru, merge branch baru ke ke branch lain dan review code. 
 
-Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa css harus dibuat terpisah untuk setiap halaman, tetapi ternyata lebih
-mudah jika kita membuat style dari beberapa halaman dalam 1 css agar jika ada dimodifikasi, halaman yang terkait dengan style tersebut akan berubah
+Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa saya hanya membuat branch baru dan merge keduanya ternyata ada yang lebih dari itu seperti sistem nama dari commit dan isi dari branch main digantikan oleh branch fitur-petunjuk
 
-Menyiapkan Halaman:
-index.html
-kegiatan.html
-daftar.html
-css/style.css
- Tindakan: Membuat 3 halaman web beserta isinya
- Hasil nyata: ketiga halaman bisa dibuka dan tampilannya muncul.
- Bukti: Ketika halaman dibuka, teks dan isinya akan tampil di layar. (ss halaman berada, daftar, dan kegiatan)
+REPOSITORY AMAN
+git status
+git branch
+git switch -c fitur-petunjuk
+ Tindakan: Menjalankan 3 perintah git di terminal
+ Hasil nyata: melihat branch yang ada di git lokal dan membuat branch baru bernama fitur-petunjuk
+ Bukti: setelah dibuat branch fitur-petunjuk, maka ketika git branch maka akan terdapat 2 branch.
 
+SIMULASI REVIEW
+git diff nama-branch-utama...fitur-petunjuk
+ Tindakan: Menjalankan perintah git ini di terminal
+ Hasil nyata: ini membandingkan branch main dengan branch fitur-petunjuk
+ Bukti: file yang dibedakan dari branch main dan fitur-petunjuk (ss git diff main fitur-petunjuk)
 
-NAVIGASI KONSISTEN:
-nav aria-label="Navigasi utama">
- <a href="index.html">Beranda</a>
- <a href="kegiatan.html">Kegiatan</a>
- <a href="daftar.html">Daftar</a>
-</nav>
- Tindakan: Membuat tag link di nav agar menjadi navigasi antar halaman.
- Hasil nyata: Ketika link ditekan, maka akan berpindah ke halaman yang dituju berdasarkan linknya.
- Bukti: Ketika mengklik kegiatan, daftar, atau beranda maka akan berpindah ke halaman yang mau dituju (ss navigasi halaman beranda, daftar, dan kegiatan)
- 
+ MENGGABUNGKAN PERUBAHAN
+ git switch nama-branch-utama
+git merge fitur-petunjuk
+git log --oneline --max-count=5
+Tindakan:
+    
 Path dan Aset:
 <link rel="stylesheet" href="css/style.css">
 <img src="assets/lokasi.jpg" alt="Lokasi kegiatan">

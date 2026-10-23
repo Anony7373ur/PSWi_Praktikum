@@ -1,0 +1,1 @@
+<!--dari website gabriel untuk tampilan bernda terlihat renggang , pada bagian kegiatan rapi dan enak dipandang dan pemilihan gambar pada website nya bagus , dan pada bagian pendaftaran / daftar kegiatan mahasiswa tampilan kolom pendaftaran sangat rapi . pada 3 bagian website ini Tab berjalan lancar ,dan pewarnaan website tertatah rapi.--!>gi
