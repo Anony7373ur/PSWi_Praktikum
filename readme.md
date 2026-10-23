@@ -1,4 +1,4 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Gambar Responsif, Fluid Sizing, dan Preferensi Pengguna
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Integrasi Situs Multipage (WEEK 7 -- seminggu sebelum UTS)
 
 Nama    : Gabriel Christian Ronaldo Panjaitan
 NIM:    : 41426009
@@ -6,76 +6,88 @@ Prodi   : DIV Teknologi Rekayasa Perangkat Lunak (41TRPL1)
 
 Laporan:
 
-Penggunaan AI: Saya tidak pernah memakai AI
+Penggunaan AI: *Saya tidak pernah memakai AI*
 
-Tujuan: Ini untuk melatih dan belajar untuk membuat gambar responsif sesuai dengan perangkat layar dan membuat kode unutk preferensi penggunaan
+Tujuan: Ini untuk melatih dan belajar untuk mengintegrasikan beberapa halaman dengan navigasi dan gaya konsisten di css.
 
-Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa penggunaan @media seperti if jika kondisi terpenuhi maka akan dilakukan style tersebut jika tidak maka jangan lakukan, ternyata fungsi @media tidak hanya itu saja. Kemudian saya perhatikan kalau modul ini fokus memeriksa adaptasi layar dan menguji setiap cobaan agar saya tau bagaimana kode yang ada di HTML. 
+Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa css harus dibuat terpisah untuk setiap halaman, tetapi ternyata lebih
+mudah jika kita membuat style dari beberapa halaman dalam 1 css agar jika ada dimodifikasi, halaman yang terkait dengan style tersebut akan berubah
 
-Gambar Fleksibel:
-img { max-width: 100%; height: auto; }
- Tindakan: Meletakkan properti img di css.
- Hasil nyata: Properti ini membuat untuk image nya berubah ukuran sesuai layar perangkat
- Bukti: Ketika layar perangkat diperkecil dari viewport maka gambar akan tetap menyesuaikan lebar dari gambar dengan ketinggian yang otomatis diatur sesuai dengan layar. (ss max-width 100% yang besar dan kecil)
-
-
-Kandidat Resolusi:
-<img src="foto-640.jpg"
- srcset="foto-320.jpg 320w, foto-640.jpg 640w"
- sizes="(min-width: 48rem) 50vw, 92vw"
- width="640" height="360" alt="Kegiatan diskusi mahasiswa">
- Tindakan: Meletakkan tag di bagian HTML disertakan source gambar yang sesuai gambar yang di folder
- Hasil nyata: Gambar akan menyesuaikan sesuai min-width dari layar jadi jika diperkecil maka gambar akan mengecil tapi menyentuh tepi website.
- Bukti: Resolusi dari gambar tetap dipertahankan tapi ukuran akan berkecil jika viewport diperkecil. (ss 320px dan 640px gambar resolusi)
-
-FLUID FONT DAN CONTAINER QUERY
-h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); }
-.card-wrap { container-type: inline-size; }
-@container (min-width: 30rem) {
- .card { padding: 1.5rem; }
-}
-Tindakan: Menambahkan properti h1 dan .card-wrap ke CSS.
-Hasil nyata: Fontsize akan berubah sesuai layar perangkat dari 1.75rem, 1.2rem. untuk .card, teks tidak akan memanjang lebih dari aslinya dan akan turun ke bawah buat baris baru. untuk @container, jika layar perangkat di 30rem maka .card akan ada padding sejauh 1.5rem.
-Bukti: Ketika layar diperkecil, teks di h1 akan turun ke bawah tetapi ukuran teks tidak banyak berubah. teks di .card-wrap akan buat baris ke bawah jika sudah hampir ke tepi dan container bekerja jika layar dibawah 30rem yang dimana akan membuat padding 1.5rem. (ss sebelum query @container dan sesudah query)
+Menyiapkan Halaman:
+index.html
+kegiatan.html
+daftar.html
+css/style.css
+ Tindakan: Membuat 3 halaman web beserta isinya
+ Hasil nyata: ketiga halaman bisa dibuka dan tampilannya muncul.
+ Bukti: Ketika halaman dibuka, teks dan isinya akan tampil di layar. (ss halaman berada, daftar, dan kegiatan)
 
 
-REDUCED MOTION DAN AUDIT:
-@media (prefers-reduced-motion: reduce) {
- .card { transition: none; }
-}
-Tindakan: Menempatkan .card di css.
-Hasil nyata: Jika pengguna memilih motion nya direndahkan maka transisi dari tag .card akan mati
-Bukti:Ketika layar diperkecil, Item tidak akan ada transisi yang membuat pengguna tidak nyaman ketika layar  diperkecil atau di perangkat layarnya. (ss reduced motion)
+NAVIGASI KONSISTEN:
+nav aria-label="Navigasi utama">
+ <a href="index.html">Beranda</a>
+ <a href="kegiatan.html">Kegiatan</a>
+ <a href="daftar.html">Daftar</a>
+</nav>
+ Tindakan: Membuat tag link di nav agar menjadi navigasi antar halaman.
+ Hasil nyata: Ketika link ditekan, maka akan berpindah ke halaman yang dituju berdasarkan linknya.
+ Bukti: Ketika mengklik kegiatan, daftar, atau beranda maka akan berpindah ke halaman yang mau dituju (ss navigasi halaman beranda, daftar, dan kegiatan)
+ 
+Path dan Aset:
+<link rel="stylesheet" href="css/style.css">
+<img src="assets/lokasi.jpg" alt="Lokasi kegiatan">
+Tindakan: Menambahkan link pengait ke css dan gambar
+Hasil nyata: Gambar di halaman muncul dan tampilan web berubah karena dikaitkan ke css
+Bukti: Ketika diuji dengan membuat penamaan file menjadi kapital maka akan terjadi 404 atau tidak ditemukan karena nama berbeda dengan yang diminta, kemudian saya perbaiki dengan menyamakan nama file yang pada akhirnya tampilan web berubah dan gambar muncul. 
+(ss network 404)
 
-Latihan mandiri dan matriks UJI:
+
+
+== AUDIT KESELURUHAN (termasuk matriks uji dan laporan) ==
+Halaman: beranda.html
 Kasus:
-1. Gambar Path = Gambar bisa tampil di web dengan path images/City.PNG
-2. Container sempit/lebar = Berdasar query di @container membuat jarak padding 1.5rem
-3. Zoom 200% = Konten masih tampak meskipun di zoom
-4. Reduced Motion = Transisi opsional tidak tampak tapi berfungsi
+1. Semua link -- harapan: Tujuan benar -- hasil nyatanya: terhubung dan bisa akses halaman web lainnya
+halaman aktif -- harapan: aria-current hanya sesuai halaman -- hasil nyatanya: aria-current aktif dan menunjukkan halaman terkini yang sedang dibuka
+2. Aset -- harapan: Tidak 404 -- hasil nyatanya: css dan gambar terhubung dengan baik dan tidak ada error 404 (tidak ditemukan)
+3. zoom -- harapan: konten tetap tersedia -- hasil nyatanya: tampilan web tetap rapi dan muncul ketika resolusi web diperkecil di 320px, 1200px dan 200% 
+4. keyboard -- harapan: interaksi tersedia -- hasil nyatanya: Tab fokus bekerja dengan baik
+
+Halaman: kegiatan.html
+Kasus:
+1. Semua link -- harapan: Tujuan benar -- hasil nyatanya: terhubung dan bisa akses halaman web lainnya
+halaman aktif -- harapan: aria-current hanya sesuai halaman -- hasil nyatanya: aria-current aktif dan menunjukkan halaman terkini yang sedang dibuka
+2. Aset -- harapan: Tidak 404 -- hasil nyatanya: css dan gambar terhubung dengan baik dan tidak ada error 404 (tidak ditemukan)
+3. zoom -- harapan: konten tetap tersedia -- hasil nyatanya: tampilan web tetap rapi dan muncul ketika resolusi web diperkecil di 320px, 1200px dan 200% 
+4. keyboard -- harapan: interaksi tersedia -- hasil nyatanya: Tab fokus bekerja dengan baik
+
+Halaman: daftar.html
+Kasus:
+1. Semua link -- harapan: Tujuan benar -- hasil nyatanya: terhubung dan bisa akses halaman web lainnya
+halaman aktif -- harapan: aria-current hanya sesuai halaman -- hasil nyatanya: aria-current aktif dan menunjukkan halaman terkini yang sedang dibuka
+2. Aset -- harapan: Tidak 404 -- hasil nyatanya: css dan gambar terhubung dengan baik dan tidak ada error 404 (tidak ditemukan)
+3. zoom -- harapan: konten tetap tersedia -- hasil nyatanya: tampilan web tetap rapi dan muncul ketika resolusi web diperkecil di 320px, 1200px dan 200% 
+4. keyboard -- harapan: interaksi tersedia -- hasil nyatanya: Tab fokus bekerja dengan baik
+
 
 Format laporan:
 
 Kasus normal :
-Tindakan: Saya menambahi h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); } .card-wrap { container-type: inline-size; }
-@container (min-width: 30rem) {
- .card { padding: 1.5rem; }
-} di css
-Hasil Aktual: Ketika diperkecil, item di card berpindah ke bawah secara vertikal dan tidak menyamping karena kondisi ukuran layar memenuhi di query sesuai harapan
-Bukti/status: Berhasil (ss sebelum dan sesudah query @container)
+Tindakan: saya menambah beberapa halaman yaitu beranda, kegiatan, dan daftar
+Hasil Aktual: ketiga halaman terhubung dengan baik dengan navigasi
+Bukti/status: Berhasil (ss halaman juga navigasi beranda, kegiatan, dan daftar)
 
 Kasus batasan
-Tindakan: Saya menambahi <img src="foto-640.jpg" srcset="foto-320.jpg 320w, foto-640.jpg 640w" sizes="(min-width: 48rem) 50vw, 92vw"
- width="640" height="360" alt="Kegiatan diskusi mahasiswa">
-Hasil aktual: Gambar kedua yang sesuai dengan resolusi akan tampil seperti 320px dan jika layar diperbesar maka resolusi gambar pertama menggantikan. ekspektasi berbeda karena gambar tidak berubah sama sekali dan hanya resolusi gambar yang menyesuaikan dengan layar.
-Bukti/status: Berhasil(ss 320px dan 640px gambar resolusi)
+Tindakan: Saya membuat tag a href untuk menghubungan halaman dengan halaman lain
+Hasil aktual: Ketika link ditekan, maka akan diarahkan ke halaman yang dituju
+Bukti/status: Berhasil(ss navigasi beranda, kegiatan dan daftar)
 
 Kasus gagal:
-Tindakan: Saya memasukkan @media (prefers-reduced-motion: reduce) 
- .card { transition: none; }
-Hasil aktual: tidak ada  perubahan apapun bahkan jika diperkecil meskipun sudah memakai devtool
-Bukti/status: Gagal (ss reduced motion)
+Tindakan: Saya membuat penamaan file gambar dan css menjadi huruf kapital.
+Hasil aktual: file gambar dan css tidak ditemukan maka tampilan web tidak menampilkan gambar dan tidak ada style.
+Bukti/status: Gagal (ss network 404)
 
-Milestone: Saya sudah bisa belajar dan memahami cara membuat gambar responsif dan item yang berpindah ke bawah ketika query @container memenuhi.
-backlog: Devtool viewport untuk mengatur ukuran layar dan rendering untuk menguji transisi dari .card
-buglog: terjadi masalah saat membuat gambar resolusi dan transisi item.
+
+
+Milestone: Saya sudah bisa belajar dan memahami cara mengintegrasikan beberapa halaman web dan satu css untuk merubah tampilan seluruh halaman.
+backlog: Devtool network untuk memeriksa file dan halaman web terkoneksi dengan baik dan dapat ditemukan. Devtool viewport untuk melihat tampilan halaman web jika diperkecil.
+buglog: terjadi masalah 404 jika penamaan file gambar dan css di html berbeda dengan file yang ada dalam folder web. 

@@ -1,29 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Halaman Pertama Saya</title>
- <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profil dan program Komunitas Web Mahasiswa.">
+    <title>Beranda | Komunitas Web Mahasiswa</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <nav aria-label="Navigasi utama">
- <ul class="nav-list">
- <li><a href="#kegiatan">Kegiatan</a></li>
- <li><a href="#kontak">Kontak</a></li>
- </ul>
-</nav>
-<main id="kegiatan">
- <h1>Kegiatan Mahasiswa IT DEL di Prodi DIV TRPL</h1>
- <img src="images/Ganexity 640px.png" srcset="images/Ganexity_320px.png 320w, images/Ganexity_640px.png 640w" sizes="(min-width: 48rem) 50vw, 92vw" width="640" height="360" alt="Kegiatan diskusi mahasiswa">
- <div class="catalog">
- <article class="card"><h2>Lokakarya HTML</h2><a href="#belajar-html"><p style="color: rgb(149, 243, 248)">Belajar struktur.</p></a></article>
- <article class="card"><h2>Diskusi CSS</h2><p>Belajar tampilan.</p></article>
- <article class="card"><h2>Audit Web</h2><p>Menguji kualitas.</p></article>
- <article class="card"><h2>kode JS</h2><p>Menguji Script.</p></article>
- <article class="card"><h2>Data PHP</h2><p>Mengatur data PHP.</p></article>
- </div>
-</main>
-<footer id="kontak">Kontak: kegiatan@example.com</footer>
+    <header>
+        <h1>Komunitas Web Mahasiswa</h1>
+        <p>Belajar, berbagi, dan membangun situs bersama.</p>
+        <nav aria-label="Navigasi utama">
+            <a class="navi" href="index.html" aria-current="page">Beranda</a>
+            <a class="navi" href="kegiatan.html">Kegiatan</a>
+            <a class="navi" href="daftar.html">Daftar</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Selamat Datang di Website Komunitas</h2>
+            <img src="images/ganexia.png" alt="Gabriel won the championship" width="500" height="auto">
+        </section>
+        <section class="developer">
+            <h2>Profil Pengembang</h2>
+            <p><strong>Nama:</strong> Gabriel Christian Ronaldo Panjaitan</p>
+            <p><strong>NIM:</strong> 41426009</p>
+            <p><strong>Kelas:</strong> 41TRPL1</p>
+        </section>
+
+        <section class="content-grid">
+            <article id="tentang">
+                <h3>Tentang Komunitas</h3>
+                <p>Komunitas ini membantu mahasiswa belajar pengembangan web secara terbuka dan kolaboratif.</p>
+            </article>
+            <article id="kegiatan">
+                <h3>Kegiatan Terbaru</h3>
+                <p>Lokakarya HTML Semantik: Mempelajari struktur halaman bermakna yang ramah aksesibilitas.</p>
+            </article>
+            <article id="program_kerja">
+                <h3>Program Kerja</h3>
+                <ul>
+                    <li>Pelatihan Dasar Pemrograman Web</li>
+                    <li>Sesi Berbagi Pengalaman Mahasiswa</li>
+                    <li>Proyek Kolaborasi Portofolio</li>
+                </ul>
+            </article>
+            <article id="berita">
+                <h3>Berita Komunitas</h3>
+                <p>Peningkatan partisipasi mahasiswa dalam kegiatan web teknologi tahun akademik ini.</p>
+            </article>
+        </section>
+        <aside class="info-tambahan">
+            <section>
+                <h3>Jadwal Pertemuan</h3>
+                <p>Pertemuan rutin diadakan setiap pukul 13.00 WIB - 15.00 WIB.</p>
+            </section>
+            <section>
+                <h3>Informasi Pendaftaran</h3>
+                <p>Pendaftaran anggota baru dibuka setiap awal semester.</p>
+            </section>
+        </aside>
+    </main>
+
+    <footer id="kontak">
+        <p>2026 Komunitas Web Mahasiswa.</p>
+        <address>Email: web@example.ac.id</address>
+    </footer>
 </body>
 </html>

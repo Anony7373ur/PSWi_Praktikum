@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pendaftaran kegiatan Komunitas Web Mahasiswa.">
+    <title>Pendaftaran | Komunitas Web Mahasiswa</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Formulir Pendaftaran Online</h1>
+        <p>Isi formulir berikut untuk mengikuti kegiatan lokakarya.</p>
+        <nav aria-label="Navigasi utama">
+            <a class="navi" href="index.html">Beranda</a>
+            <a class="navi" href="kegiatan.html">Kegiatan</a>
+            <a class="navi" href="daftar.html" aria-current="page">Daftar</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img class="kegiatan-img" src="images/Login.png" alt="Gambar Ganexia" width="240">
+            <h2>Pendaftaran Kegiatan</h2>
+            <p class="notice">Kolom bertanda wajib harus diisi sebelum mengirim formulir.</p>
+        </section>
+
+        <form action="#" method="get">
+            <label for="nama">Nama Lengkap (wajib):</label>
+            <input id="nama" name="nama" type="text" autocomplete="name" required>
+
+            <label for="email">Email (wajib):</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+
+            <label for="telpon">Nomor Telepon (wajib):</label>
+            <input id="telpon" name="telpon" type="tel" autocomplete="tel" required>
+
+            <label for="prodi">Program Studi (wajib):</label>
+            <select id="prodi" name="prodi" required>
+                <option value="">Pilih program studi</option>
+                <option value="trpl">D4 TRPL</option>
+                <option value="ti">D3 Teknologi Informasi</option>
+            </select>
+
+            <label for="ticket">Jumlah Tiket (wajib):</label>
+            <input id="ticket" name="ticket" type="number" min="1" max="5" step="1" value="1" required>
+
+            <fieldset>
+                <legend>Mode Kehadiran (wajib)</legend>
+                <label><input id="luring" name="mode" type="radio" value="luring" required> Luring</label>
+                <label><input id="daring" name="mode" type="radio" value="daring"> Daring</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Minat Topik HTML</legend>
+                <label><input id="pilihan1" name="topik_gambar" type="checkbox" value="gambar"> Peletakan gambar</label>
+                <label><input id="pilihan2" name="topik_form" type="checkbox" value="form"> Pembuatan form</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Aksesibilitas</legend>
+                <label><input id="pilihan3" name="akses_alt" type="checkbox" value="alt"> Teks alternatif pada gambar</label>
+                <label><input id="pilihan4" name="akses_terjemahan" type="checkbox" value="terjemahan"> Teks terjemahan</label>
+            </fieldset>
+
+            <label for="catatan">Catatan Tambahan (opsional):</label>
+            <textarea id="catatan" name="catatan" rows="4" maxlength="300" placeholder="Tuliskan pesan atau kebutuhan khusus..."></textarea>
+
+            <p class="keterangan-form">Formulir pendaftaran ditujukan untuk persiapan kegiatan praktikum dan lokakarya mahasiswa.</p>
+            <button id="submit" type="submit">Kirim Pendaftaran</button>
+        </form>
+    </main>
+
+    <footer id="kontak">
+        <p>2026 Komunitas Web Mahasiswa.</p>
+        <address>Email: web@example.ac.id</address>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
