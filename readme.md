@@ -1,4 +1,4 @@
-LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB Branch, Merge, dan Code Review (WEEK 7 -- seminggu sebelum UTS)
+LAPORAN PRAKTIKUM PENGEMBANGAN SITUS WEB: Variabel, Conditional, dan Loop
 
 Nama    : Gabriel Christian Ronaldo Panjaitan
 NIM:    : 41426009
@@ -8,80 +8,74 @@ Laporan:
 
 Penggunaan AI: *Saya tidak pernah memakai AI*
 
-Tujuan: Ini untuk melatih dan belajar untuk bisa membuat branch baru, merge branch baru ke ke branch lain dan review code. 
+Tujuan: Ini untuk melatih dan belajar koding menggunakan javascript yaitu konversi tipe data, penjumlahan, penggunaan if, array dan pengulangan.
 
-Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa saya hanya membuat branch baru dan merge keduanya ternyata ada yang lebih dari itu seperti sistem nama dari commit dan isi dari branch main digantikan oleh branch fitur-petunjuk
+Asumsi sebelum menguji di modul ini/praktikum ini adalah bahwa saya koding di javascript untuk belajar penerapan langsung ke dom html tetapi
+ternyata belajar dasarnya yaitu konversi, tipe data, array dan lain sebagainya.
 
-REPOSITORY AMAN
-git status
-git branch
-git switch -c fitur-petunjuk
- Tindakan: Menjalankan 3 perintah git di terminal
- Hasil nyata: melihat branch yang ada di git lokal dan membuat branch baru bernama fitur-petunjuk
- Bukti: setelah dibuat branch fitur-petunjuk, maka ketika git branch maka akan terdapat 2 branch.
- (ss git branch dan brach)
+ --FILE DAN CONSOLE--
+<script src="main.js" defer></script>
+ Tindakan: Mengaitkan html ke javascript menggunakan tag script
+ Hasil nyata: dengan mengaitkan javascript ke html maka kode akan berfungsi dengan baik
+ Bukti: hasil tampak di console devtool browser(screenshot hasil console.log)
 
-SIMULASI REVIEW
-git diff nama-branch-utama...fitur-petunjuk
- Tindakan: Menjalankan perintah git ini di terminal
- Hasil nyata: ini membandingkan branch main dengan branch fitur-petunjuk
- Bukti: file yang dibedakan dari branch main dan fitur-petunjuk (ss git diff main fitur-petunjuk)
+ --KONVERSI DATA--
+const teks = "2";
+console.log(teks + 1);
+console.log(Number(teks) + 1);
+ Tindakan: Memasukkan kode ini ke dalam javascript dan menjalankannya
+ Hasil nyata: pada console.log pertama hanya menggabungkan string yaitu "2" ke 1 yang dimana hasilnya adalah 21. 
+ Pada console.log kedua mengonversi string teks yang 2 menjadi angka atau number agar bisa di tambahkan dengan 1.
+ Bukti: penggabungan string dan konversi angka muncul di console devtool browser. (screenshot konversi data dan experimen konversi data)
 
- MENGGABUNGKAN PERUBAHAN
- git switch nama-branch-utama
-git merge fitur-petunjuk
-git log --oneline --max-count=5
-Tindakan: menjalankan 3 perintah git ini di terminal
-Hasil nyata: Ini mengganti ke branch main kemudian digabungkan dengan branch fitur-petunjuk kemudian menunjukkan commit
-Bukti: isi dari branch fitur-petunjuk sudah tergabung ke branch main (ss menggabungkan perubahan)
+ --ATURAN JUMLAH TIKET--
+ const jumlah = Number("3");
+ if (!Number.isInteger(jumlah) || jumlah < 1 || jumlah > 5) {
+ console.log("Jumlah tidak valid");
+ } else { console.log(jumlah * 10000); }
+Tindakan: Memasukkan kode ini ke dalam javascript dan menjalankannya
+Hasil nyata: meggunakan if yang dimana jika jumlah tidak integer, jumlah < 1, atau jumlah > 5 maka jumlah tidak valid. Jika salah satu
+tidak true maka akan menjalankan console.log(jumlah * 10000) di kali dengan nilai dari variabel jumlah.
+Bukti: hasil muncul di console devtool yaitu hasil dari kondisi if yang terpenuhi atau tidak.(screenshoot jumlah = 1, jumlah = 5, jumlah tidak valid, )
     
 
---Walkthrough Kesiapan UTS--
-Checklist: 
-Semantik = Seluruh halaman mempunyai tag yang sesuai tujuannya dan tidak ada div atau kontainer kosong yang tidak ada makna. Contohnya seperti <header> <nav> <aside> <main> <footer> <head>. Jika tidak semantik maka  contohnya adalah <div> <span>
+ --LOOP KOLEKSI--
+ const judul = ["HTML", "CSS", "Audit"];
+ for (const item of judul) console.log(item);
+Tindakan: Memasukkan kode ini ke dalam javascript dan menjalankannya
+Hasil nyata: membuat item didalam array variabel judul yang kemudian menggunakan perulangan untuk memasukkan seluruh isi ke dalam item dan
+mencetak isi dari variabel judul tersebut dari item.
+Bukti: isi Array dari judul muncul di console devtool browser(screenshoot array, 4 item array, array kosong)
+    
 
-form = Ketika membuat formulir diawali  dengan action dan method yang dimana action adalah hasil jawaban dari formulir yang akan dikirim ke suatu server atau halaman. sedangkan method adalah cara pengiriman dari formulirnya seperti GET dan POST. Ketika mau membuat input maka menggunakan <input> dengan parameter berupa id, type, name, required, dan sebagainya. Untuk nama dari input yang diminta bisa diberi <label> sebagai nama dari input yang akan diisi. Kemudian ada  pilihan opsi dengan menggunakan <select> sebagai basisnya dan <option> untuk pilihan yang disediakan. parameter value di option untuk nama data yang akan dikirim ke server.
-Kemuddian ada tag <fieldset> untuk basis radio (pilih salah satu), didalam ada legend sebagai penamaan dari basis radio, kemudian untuk membuat pilihan dapat menggunakan <input> dengan parameter type radio kemudian dibawah dibuat <label> sebagai nama dari input itu.
-jika radio adalah pilih salah satu, ada namanya checkbox yang bisa memilih beberapa pilihan dan tidak salah satu. 
-Terakhir ada <textarea> yaitu areatext yang dapat diisi bebas dan bisa memilih ukuran dengan bebas dengan cara menarik ujung dari teks area. Ketika mau ingin mengirim data dari formulir maka dibuat tag <button> dengan parameter type=submit dan akan dikirim sesuai action yang ada di form.
-
-CSS = Saya sudah mempelajari penggunaan padding, color, background, media, margin, font, width, height, display flex dan grid, border, hover.
-
-layout = saya sudah mengertikan menggunakan layout di devtool maupun di html sebagai meluruskan suatu bagian dengan bagian lain agar rapi. Jika di devtool bisa buka tab layout dan kalau menggunakan display grid maka bisa diatur keaman arah item yang di grid diletakkan.
-
-responsive = Responsive yang dimaksud adalah ukuran layar yang diperkecil dan halaman website menyesuaikan dengan ukuran layar handphone. Bisa memakai display flex dan grid. Jika menerapkan display tersebut maka text dan bagian tersebut akan bergeser ke kiri atau turun kebawah agar tampilan dan teks masih nampak di layar perangkat apapun.
-
-Git = saya sudah bisa menggunakan git lokal dan github, yang dimana prosedur yang saya biasa lakukan adalah git init untuk membuat repositori lokal baru, kemudian git status untuk mengecek file apa saja yang akan dimasukkan, kemudian git add . untuk membungkus seluruh file agar bisa dicommmit, terakhir adalah git commit -m "" untuk menyimpan file tersebut ke repositori lokal dan repositori tersebut bisa dijadikan online ke github dengan git push tetapi harus terlebih dahulu dikonfigurasi git remote dan git branchnya. 
-
-Konflik yang diminta:
-Konflik CSS: (SS Konflik css)
-Kasus validasi gagal: (SS Validator gagal)
-
-Latihan mandiri dan matriks UJI:
+== AUDIT KESELURUHAN (termasuk matriks uji dan laporan) ==
 Kasus:
-1. Branch fitur = Ketika commit di branch fitur-petunjuk dan balik ke branch main, maka file yang ada di branch fitur petunjuk tidak muncul di branch main
-2. Review = Review.md dari branch fitur-petunjuk digabungkan ke branch main dan review dari teman sudah dibuat.
-3. Merge = Ketika branch fitur-petunjuk di merge branch main, maka review.md berpindah ke branch main dan bisa diakses
-4. Semua halaman = Halaman tetap bekerja dan berfungsi meskipun kedua branch digabungkan.
+1. string 2 + 1 -- harapan: 21 -- hasil nyatanya: di console devtool akan menampilkan hasil dari console.log(teks + 1) yaitu 21
+2. number 2 + 1 -- harapan: 3 -- hasil nyatanya: di console devtool akan menampilkan hasil dari console.log(number(teks) + 1) yaitu 3 karena 2 + 1
+3. jumlah 0/6 -- harapan: Ditolak -- karena kondisi if terpenuhi yaitu jumlah < 1 atau jumlah > 5 yang dimana jumlah tidak valid
+4. array kosong -- harapan: tidak ada iterasi -- hasil nyatanya: karena tidak isi dalam array maka for tidak menemukan data untuk dimasukkan ke item
+
 
 Format laporan:
 
 Kasus normal :
-Tindakan: Saya memasukkan git status, git branch, git switch -c fitur-petunjuk
-Hasil Aktual: branch baru bernama fitur-petunjuk dibuat
-Bukti/status: Berhasil (ss git branch baru fitur-petunjuk)
+Tindakan: Saya mengaitkan javascript dengan html menggunakan <script>
+Hasil Aktual: Javascript bisa dijalankan melalui console devtool di browser
+Bukti/status: Berhasil (screenshot hasil console.log)
 
 Kasus batasan
-Tindakan: git diff main fitur-petunjuk
-Hasil aktual: akan memeriksa apa yang beda dari branch main dan fitur-petunjuk
-Bukti/status: Berhasil(ss git diff main fitur-petunjuk)
+Tindakan: nilai dari jumlah diubah menjadi 6 atau 0 di bagian if
+Hasil aktual: ketika dijalankan maka jumlah tidak valid dikarenakan jumlah < 1 dan jumlah > 5
+Bukti/status: Berhasil(screenshot jumlah tidak valid)
 
 Kasus gagal:
-Tindakan: Tidak ada kasus gagal
-Hasil aktual: -
-Bukti/status: berhasil (git dan gambar bukti)
+Tindakan: membuat array judul kosong dan pengulangan pada item di array tersebut
+Hasil aktual: tidak ada iterasi dan item yang ingin dicetak dari console.log
+Bukti/status: Gagal (ss array kosong)
 
 
-Milestone: Saya sudah bisa belajar dan memahami cara membuat branch baru dan menggabungkan kedua branch dengan isi berbeda.
-backlog: Halaman dicek menggunakan validator dan sengaja membuat konflik css
-buglog: tidak terjadi masalah ketika melakukan branch baru dan merge kedua branch.
+
+Milestone: Saya sudah bisa belajar dan memahami cara menggunakan variabel, kondisi if else, dan array juga loop di javascript
+backlog: Devtool console untuk melihat hasil dari console.log yang ada di kode dalam javascript
+buglog: array kosong tidak tampil di console dan dicobai isFloat tetapi tidak ada fungsi tersebut jadi untuk memeriksa sebuah nilai itu hanya
+ada isInteger untuk melihat apakah nilai dalam jumlah tersebut bilangan bulat.
